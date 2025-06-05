@@ -627,3 +627,21 @@ body {
     transform: scaleY(0.3);
   }
 }
+
+.mes-enero { background-color: #fde2e4; }
+.mes-febrero { background-color: #fff1e6; }
+.mes-marzo { background-color: #dbe7e4; }
+.mes-abril { background-color: #e2ece9; }
+.mes-mayo { background-color: #e0f7fa; }
+.mes-junio { background-color: #ede7f6; }
+.mes-julio { background-color: #f3e5f5; }
+.mes-agosto { background-color: #fce4ec; }
+.mes-septiembre { background-color: #fff9c4; }
+.mes-octubre { background-color: #ffe0b2; }
+.mes-noviembre { background-color: #dcedc8; }
+.mes-diciembre { background-color: #c8e6c9; }
+.fecha-mes {
+  padding: 4px 8px;
+  border-radius: 5px;
+  display: inline-block;
+}

@@ -7,12 +7,15 @@ import {
     getSortedRowModel,
     flexRender,
 } from '@tanstack/react-table';
-import { getFetch } from '../components/Api_Connect';
+import { getFetch, deleteFetch } from '../components/Api_Connect';
 import { useAuth } from '../context/AuthContext';
 import TableComponent from '../components/TableComponent'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { downloadTableToExcel } from '../components/download_file';
+import Swal from 'sweetalert2';
 
 
 const Table_teacher = () => {
@@ -22,16 +25,23 @@ const Table_teacher = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { sb } = useAuth();
     const navigate = useNavigate();
+    const [submittingRowIndex, setSubmittingRowIndex] = useState(null);
+    const [isSubmittingStatus, setIsSubmittingStatus] = useState(false);
+    const [refresh, setRefresh] = useState(true)
     useEffect(() => {
         const table_st = async () => {
             const res = await getFetch(sb, 'teacher/');
             if (res.data) {
                 setData(res.data);
             }
-            setIsLoading(false); // <-- importante
+            setIsLoading(false);
+            setRefresh(false);// <-- importante
         };
-        table_st();
-    }, []);
+        if (refresh) {
+            table_st();
+        }
+
+    }, [refresh]);
 
 
     const columns = useMemo(
@@ -65,6 +75,71 @@ const Table_teacher = () => {
                 cell: ({ getValue }) => <span>{getValue()}</span>,
             },
             {
+                accessorKey: 'active',
+                header: 'Estado',
+                cell: (info) => {
+                    const rowIndex = info.row.index;
+                    const rowData = info.row.original;
+
+                    const handleCheckboxChange = async (e) => {
+                        const newValue = e.target.checked;
+                        setIsSubmittingStatus(true);
+                        setSubmittingRowIndex(rowIndex); // Marcar la fila que se está actualizando
+                        console.log("da el valor" + newValue);
+
+                        const fullData = {
+                            teacher: { p_person_id: rowData.personid, p_active: newValue },
+                        };
+
+                        const resultado = await deleteFetch(sb, "teacher", fullData);
+                        console.log(resultado);
+
+                        if (resultado) {
+                            setData((old) =>
+                                old.map((row, index) =>
+                                    index === rowIndex ? { ...row, e_active: newValue } : row
+                                )
+                            );
+
+                            Swal.fire({
+                                title: 'Profesor actualizada!',
+                                text: 'El estado del profesor ha sido actualizado correctamente.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                backdrop: true,
+                            });
+                        }
+
+                        setIsSubmittingStatus(false);
+                        setSubmittingRowIndex(null); // Limpiar después de terminar
+                        setRefresh(true);
+                         setIsLoading(true);
+                    };
+
+                    const isThisRowLoading = isSubmittingStatus && submittingRowIndex === rowIndex;
+
+                    return (
+                        <>
+                            {isThisRowLoading ? (
+                                <span className="spinner-enrolment" style={{ display: 'inline-block' }}></span>
+                            ) : (
+                                <div className="form-check form-switch">
+                                    <input
+                                        className="form-check-input"
+                                        type="checkbox"
+                                        disabled={isSubmittingStatus} // Deshabilita todos excepto el spinner
+                                        checked={info.getValue()}
+                                        onChange={handleCheckboxChange}
+                                    />
+                                </div>
+                            )}
+                        </>
+                    );
+                }
+            }
+            , {
                 id: 'acciones',
                 header: '',
                 cell: ({ row }) => {
@@ -81,7 +156,7 @@ const Table_teacher = () => {
                     };
 
                     return (
-                        <div className="flex gap-2">
+                        <div className="d-flex justify-content-center align-items-center gap-2">
                             <button
                                 onClick={showTeacher}
                                 style={{ background: "transparent", borderColor: "transparent" }}
@@ -118,7 +193,7 @@ const Table_teacher = () => {
             },
 
         ],
-        []
+        [isSubmittingStatus, setIsSubmittingStatus]
     );
 
 
@@ -140,8 +215,13 @@ const Table_teacher = () => {
 
             <h3 className="text-dark mb-4" style={{ paddingTop: "10px" }}></h3>
             <div className="card shadow">
-                <div className="card-header py-3">
+                <div className="card-header py-3 d-flex justify-content-between align-items-center">
                     <p className="text-primary m-0 fw-bold">Lista de Profesores</p>
+
+                    <button className="btn btn-success" style={{ color: "white" }} onClick={() => { downloadTableToExcel(table, columns, "Lista de profesores.xlsx") }}>
+                        <FontAwesomeIcon icon={faDownload} style={{ fontSize: 20, color: "white", paddingRight: "10px" }} />
+                        Descargar lista
+                    </button>
                 </div>
                 <div className="card-body">
                     <TableComponent

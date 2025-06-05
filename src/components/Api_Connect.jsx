@@ -93,3 +93,32 @@ export const putFetch = async (sb, path, data) => {
     return false;
   }
 };
+export const deleteFetch = async (sb, path, data = null) => {
+  try {
+    const session = await sb.auth.getSession();
+    const access_token = session.data.session?.access_token;
+
+    const res = await fetch(`https://vhdqfwgegjootyegkllk.supabase.co/functions/v1/${path}/`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: data ? JSON.stringify(data) : null,
+    });
+
+    if (!res.ok) {
+      showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
+      return false;
+    } else {
+      const response = await res.json().catch(() => {
+        return {}; // En caso de que no retorne JSON
+      });
+      console.log(response);
+      return response;
+    }
+  } catch (error) {
+    showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
+    return false;
+  }
+};

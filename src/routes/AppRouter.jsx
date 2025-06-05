@@ -14,6 +14,7 @@ import { Statistics_payment } from "../pages/statistics_payment";
 import Table_enrollment from "../pages/tablet_enrollment";
 import { Loading } from "../components/Component_loading";
 import { Not_found } from "../pages/Not_Found";
+import Tablet_history_payment from "../pages/tablet_history_payment_tablet";
 
 
 const Login = lazy(() => import("../pages/login"));
@@ -50,6 +51,7 @@ const AppRouter = () => {
                             <Route path="/editar-matricula" element={<Enrollment readOnly={false} />} />
                             <Route path="/mostrar-matricula" element={<Enrollment readOnly={true} />} />
                             <Route path="/informe-de-pagos" element={<Statistics_payment />} />
+                               <Route path="/historial-de-pagos" element={<Tablet_history_payment />} />
                             <Route path="*" element={<Navigate to="/pagina-no-encontrada" />} />
                         </Routes>
                     </Suspense>

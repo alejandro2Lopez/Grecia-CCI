@@ -13,6 +13,9 @@ import TableComponent from '../components/TableComponent'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { downloadTableToExcel } from '../components/download_file';
+
 const Table_student = () => {
     const [data, setData] = useState(() => []);
     const [globalFilter, setGlobalFilter] = useState('');
@@ -102,7 +105,7 @@ const Table_student = () => {
                     };
 
                     return (
-                        <div className="flex gap-2">
+                        <div className="d-flex justify-content-center align-items-center gap-2">
                             <button
                                 onClick={handleWatchStudent}
                                 style={{ background: "transparent", borderColor: "transparent" }}
@@ -159,8 +162,12 @@ const Table_student = () => {
         <div className="container-fluid">
             <h3 className="text-dark mb-4" style={{ paddingTop: "10px" }}></h3>
             <div className="card shadow">
-                <div className="card-header py-3">
+                <div className="card-header py-3 d-flex justify-content-between align-items-center">
                     <p className="text-primary m-0 fw-bold">Lista de Estudiantes</p>
+                    <button className="btn btn-success" style={{ color: "white" }} onClick={() => { downloadTableToExcel(table, columns, "Lista de estudiantes.xlsx") }}>
+                        <FontAwesomeIcon icon={faDownload} style={{ fontSize: 20, color: "white", paddingRight: "10px" }} />
+                        Descargar lista
+                    </button>
                 </div>
                 <div className="card-body">
                     <TableComponent

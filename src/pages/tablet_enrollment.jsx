@@ -209,7 +209,7 @@ const Table_enrollment = () => {
                     const today = new Date();
                     const paymentDate = new Date(value);
                     const isOverdue = paymentDate < today;
-                  
+
                     return (
                         <p
                             className="d-xxl-flex justify-content-xxl-center align-items-xxl-center"
@@ -244,7 +244,7 @@ const Table_enrollment = () => {
                     const p_enrolment_id = enrollment.e_enrollment_id;
                     const rowIndex = row.index;
                     const isThisRowLoading = isSubmittingPayment && submittingRowIndex === rowIndex;
-                
+
                     return (<div className="container mt-4 ">
                         <div className="row justify-content-center "> <div className="flex gap-2">
                             <div className="col">
@@ -286,48 +286,45 @@ const Table_enrollment = () => {
                     const enrollment = row.original;
 
                     const handleEdit = () => {
-                        navigate(`/editar-matricula?matricula=${enrollment.e_enrollment_id}`)
+                        navigate(`/editar-matricula?matricula=${enrollment.e_enrollment_id}`);
                     };
 
                     const handleWatch = () => {
-                        navigate(`/mostrar-matricula?matricula=${enrollment.e_enrollment_id}`)
+                        navigate(`/mostrar-matricula?matricula=${enrollment.e_enrollment_id}`);
                     };
 
                     return (
-                        <div className="flex gap-2">
+                        <div className="d-flex justify-content-center align-items-center gap-3">
+                            {/* Botón WhatsApp */}
                             <button
                                 onClick={handleWatch}
-                                style={{ background: "transparent", borderColor: "transparent" }}
+                                className="btn p-0 border-0 bg-transparent"
+                                title="WhatsApp"
                             >
                                 <FontAwesomeIcon icon={faWhatsapp} style={{ fontSize: 23, color: "rgb(0, 94, 5)" }} />
-
-
                             </button>
+
+                            {/* Botón Editar */}
                             <button
                                 onClick={handleEdit}
-
-                                style={{ background: "transparent", borderColor: "transparent" }}
-                            ><i
-                                    className="fa fa-edit pt-0 mt-0"
-                                    style={{ fontSize: 22, color: "#1e5e5a" }}
-                                />
-
-
+                                className="btn p-0 border-0 bg-transparent"
+                                title="Editar"
+                            >
+                                <i className="fa fa-edit" style={{ fontSize: 22, color: "#1e5e5a" }} />
                             </button>
+
+                            {/* Botón Ver */}
                             <button
                                 onClick={handleWatch}
-                                style={{ background: "transparent", borderColor: "transparent" }}
+                                className="btn p-0 border-0 bg-transparent"
+                                title="Ver"
                             >
-
-                                <i
-                                    className="fa fa-eye pt-0 mt-0"
-                                    style={{ fontSize: 20, color: "rgb(175, 158, 0)" }}
-                                />
-
+                                <i className="fa fa-eye" style={{ fontSize: 20, color: "rgb(175, 158, 0)" }} />
                             </button>
                         </div>
                     );
                 },
+
             },
         ],
         [isSubmittingPayment, setIsSubmittingPayment]
@@ -363,7 +360,7 @@ const Table_enrollment = () => {
                         data={data}
                         botonName={'Agregar estudiante'}
                         redirecTo={"/agregar-estudiante"}
-                        displayButton={true}
+                        displayButton={false}
                     />
                 </div>
             </div>

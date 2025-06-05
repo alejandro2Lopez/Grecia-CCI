@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut, faArrowRight, faArrowLeft, faReceipt } from '@fortawesome/free-solid-svg-icons';
 import logoCci from "/assets/img/logoCCI.png"
-import { LogOut } from 'lucide-react'
+
 import { sb } from "./supabaseClient";
 export const Navbar = ({ collapsed, setCollapsed }) => {
     const navigate = useNavigate();
@@ -75,14 +75,20 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                             <span className={`navbar-letter ${collapsed ? 'd-none' : ''}`}>Informe de pagos</span>
                         </NavLink>
                     </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/historial-de-pagos">
+                            <FontAwesomeIcon icon={faReceipt} className="icon-size" />
+                            <span className={`navbar-letter ${collapsed ? 'd-none' : ''}`}>Historial de pagos</span>
+                        </NavLink>
+                    </li>
                 </ul>
                 <div class="text-center d-none d-md-inline">
                     <button class="btn rounded-circle border-0"
-                    onClick={() => setCollapsed(!collapsed)}
-                >
-                    <FontAwesomeIcon icon={collapsed ? faArrowRight : faArrowLeft} className="icon-size" style={{ color: "white" }} />
+                        onClick={() => setCollapsed(!collapsed)}
+                    >
+                        <FontAwesomeIcon icon={collapsed ? faArrowRight : faArrowLeft} className="icon-size" style={{ color: "white" }} />
 
-                </button>
+                    </button>
                 </div>
             </div>
             <div className="mt-auto">
