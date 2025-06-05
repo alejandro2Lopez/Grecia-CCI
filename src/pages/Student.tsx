@@ -1,8 +1,6 @@
 
 import React, { useMemo, useState, useEffect } from 'react';
-import "../assets/css/styles.min.css";
-import "../assets/fonts/fontawesome-all.min.css";
-import "../assets/bootstrap/css/bootstrap.min.css";
+
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';

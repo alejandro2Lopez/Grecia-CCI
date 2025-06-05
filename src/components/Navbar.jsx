@@ -1,27 +1,27 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../assets/bootstrap/css/bootstrap.min.css";
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut } from '@fortawesome/free-solid-svg-icons';
-import logoCci from "../assets/img/logoCCI.png"
+import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import logoCci from "/assets/img/logoCCI.png"
 import { LogOut } from 'lucide-react'
 import { sb } from "./supabaseClient";
 export const Navbar = ({ collapsed, setCollapsed }) => {
-const navigate = useNavigate();
+    const navigate = useNavigate();
     function handleLogout() {
-    sb.auth.signOut()
-      .then(() => {
-     
-        localStorage.clear();
-        sessionStorage.clear();
+        sb.auth.signOut()
+            .then(() => {
 
-   
-        navigate('/login'); 
-      })
-      .catch((error) => {
-        console.error('Error cerrando sesión:', error.message);
-      });
-  }
+                localStorage.clear();
+                sessionStorage.clear();
+
+
+                navigate('/login');
+            })
+            .catch((error) => {
+                console.error('Error cerrando sesión:', error.message);
+            });
+    }
     return (
         <>  <nav
             className={`navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark ${collapsed ? "toggled side-bar-collapased" : "no-side-bar-collapased"
@@ -78,11 +78,12 @@ const navigate = useNavigate();
                 </ul>
                 <div className="text-center d-none d-md-inline">
                     <button
-                        className="btn btn-g rounded-circle border-0"
-                        id="sidebarToggle"
+                        className="btn "
+                      
                         type="button"
                         onClick={() => setCollapsed(!collapsed)}
                     >
+                        <FontAwesomeIcon icon={collapsed ? faArrowRight : faArrowLeft} className="icon-size" style={{color:"white"}} />
 
                     </button>
                 </div>

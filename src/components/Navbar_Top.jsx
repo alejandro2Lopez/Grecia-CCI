@@ -1,7 +1,6 @@
 // NavbarTop.jsx
 import React from "react";
-import "../assets/bootstrap/css/bootstrap.min.css";
-import pictureprofile from "../assets/img/avatars/avatar1.jpeg"
+
 import { useAuth } from "../context/AuthContext";
 
 export const NavbarTop = ({ collapsed, setCollapsed }) => {

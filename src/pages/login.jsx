@@ -1,10 +1,8 @@
 import React, { useEffect} from "react";
 import { sb } from "../components/supabaseClient";
-import "../assets/css/styles.min.css";
-import "../assets/fonts/fontawesome-all.min.css";
-import "../assets/bootstrap/css/bootstrap.min.css";
-import imglogo from "../assets/img/logoCCI_O.png";
-import bannerlog from "../assets/img/photo-1546410531-bb4caa6b424d.jpg";
+
+import imglogo from "/assets/img/logoCCI_O.png";
+import bannerlog from "/assets/img/photo-1546410531-bb4caa6b424d.jpg";
 
 const loginWithGoogle = async () => {
   const { error } = await sb.auth.signInWithOAuth({

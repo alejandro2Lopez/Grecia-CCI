@@ -11,7 +11,7 @@ export const getFetch = async (sb, path) => {
       },
     });
     if (!res.ok) {
-      showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "Error");
+      showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
       // DEBUG: console.error('Error del servidor:', response);
       return false;
     }
@@ -24,7 +24,7 @@ export const getFetch = async (sb, path) => {
     }
 
   } catch (error) {
-    showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "Error");
+    showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
     // DEBUG: console.error('Error de red o ejecución:', error);
     return false;
   }
@@ -43,7 +43,7 @@ export const postFetch = async (sb, path, data) => {
     });
 
     if (!res.ok) {
-      showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "Error");
+      showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
       // DEBUG: console.error('Error del servidor:', response);
       return false;
     }
@@ -55,7 +55,7 @@ export const postFetch = async (sb, path, data) => {
       return response;
     }
   } catch (error) {
-    showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "Error");
+    showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
     // DEBUG: console.error('Error de red o ejecución:', error);
     return false;
   }
@@ -76,7 +76,7 @@ export const putFetch = async (sb, path, data) => {
     });
 
     if (!res.ok) {
-      showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "Error");
+      showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
       // DEBUG:   console.error('Error del servidor:', response);
       return false;
     } else {
@@ -88,7 +88,7 @@ export const putFetch = async (sb, path, data) => {
       return response;
     }
   } catch (error) {
-    showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "Error");
+    showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
     // DEBUG: console.error('Error de red o ejecución:', error);
     return false;
   }
