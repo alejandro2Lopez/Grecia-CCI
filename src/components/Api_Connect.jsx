@@ -1,4 +1,4 @@
-import { showErrorAlert } from "./response_user";
+import { showErrorAlert } from "./Response_user";
 
 // getFetch.js
 export const getFetch = async (sb, path) => {
