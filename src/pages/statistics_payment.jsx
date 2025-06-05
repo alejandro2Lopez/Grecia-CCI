@@ -15,30 +15,30 @@ export const Statistics_payment = () => {
     const [general_statitics, setGeneral_Statitics] = useState();
     const [isLoading, setIsLoading] = useState(true);
     const [pieChartData, setPieChartData] = useState({});
-useEffect(() => {
-    const statistics = async () => {
-        const res = await getFetch(sb, 'payment/');
-        if (res.data) {
-            setGeneral_Statitics(res.data.general_earned_money[0]);
-            setLabels_barline(res.data.earned_last_four_week.map(item => item.range_date));
-            setValues_barline(res.data.earned_last_four_week.map(item => item.earned));
-            setPieChartData(
-                res.data.month_earned_money.map((item, index) => ({
-                    id: index,
-                    value: item.total_ganancias,
-                    label: item.mes
-                }))
-            );
-        }
-        setIsLoading(false); 
-    };
+    useEffect(() => {
+        const statistics = async () => {
+            const res = await getFetch(sb, 'payment/');
+            if (res.data) {
+                setGeneral_Statitics(res.data.general_earned_money[0]);
+                setLabels_barline(res.data.earned_last_four_week.map(item => item.range_date));
+                setValues_barline(res.data.earned_last_four_week.map(item => item.earned));
+                setPieChartData(
+                    res.data.month_earned_money.map((item, index) => ({
+                        id: index,
+                        value: item.total_ganancias,
+                        label: item.mes
+                    }))
+                );
+            }
+            setIsLoading(false);
+        };
 
-    if (refresh) {
-        statistics();
-        setRefresh(false);
-     
-    }
-}, [refresh]);
+        if (refresh) {
+            statistics();
+            setRefresh(false);
+
+        }
+    }, [refresh]);
     return (isLoading ? (
         <Loading></Loading>
     ) : (<div className="container-fluid">
@@ -154,30 +154,8 @@ useEffect(() => {
             <div className="col-lg-7 col-xl-8">
                 <div className="card shadow mb-4">
                     <div className="card-header d-flex justify-content-between align-items-center">
-                        <h6 className="text-primary fw-bold m-0">Earnings Overview</h6>
-                        <div className="dropdown no-arrow">
-                            <button
-                                className="btn btn-link btn-sm dropdown-toggle"
-                                aria-expanded="false"
-                                data-bs-toggle="dropdown"
-                                type="button"
-                            >
-                                <i className="fas fa-ellipsis-v text-gray-400" />
-                            </button>
-                            <div className="dropdown-menu shadow dropdown-menu-end animated--fade-in">
-                                <p className="text-center dropdown-header">dropdown header:</p>
-                                <a className="dropdown-item" href="#">
-                                    &nbsp;Action
-                                </a>
-                                <a className="dropdown-item" href="#">
-                                    &nbsp;Another action
-                                </a>
-                                <div className="dropdown-divider" />
-                                <a className="dropdown-item" href="#">
-                                    &nbsp;Something else here
-                                </a>
-                            </div>
-                        </div>
+                        <h6 className="text-primary fw-bold m-0">Tendencias del Último Mes</h6>
+
                     </div>
                     <div className="card-body">
                         <div className="chart-area" style={{ width: '100%', height: 300 }}>
@@ -200,30 +178,8 @@ useEffect(() => {
             <div className="col-lg-5 col-xl-4">
                 <div className="card shadow mb-4">
                     <div className="card-header d-flex justify-content-between align-items-center">
-                        <h6 className="text-primary fw-bold m-0">Revenue Sources</h6>
-                        <div className="dropdown no-arrow">
-                            <button
-                                className="btn btn-link btn-sm dropdown-toggle"
-                                aria-expanded="false"
-                                data-bs-toggle="dropdown"
-                                type="button"
-                            >
-                                <i className="fas fa-ellipsis-v text-gray-400" />
-                            </button>
-                            <div className="dropdown-menu shadow dropdown-menu-end animated--fade-in">
-                                <p className="text-center dropdown-header">dropdown header:</p>
-                                <a className="dropdown-item" href="#">
-                                    &nbsp;Action
-                                </a>
-                                <a className="dropdown-item" href="#">
-                                    &nbsp;Another action
-                                </a>
-                                <div className="dropdown-divider" />
-                                <a className="dropdown-item" href="#">
-                                    &nbsp;Something else here
-                                </a>
-                            </div>
-                        </div>
+                        <h6 className="text-primary fw-bold m-0">Estadísticas Mensuales</h6>
+
                     </div>
                     <div className="card-body">
                         <div className="chart-area" style={{ width: '100%', height: 300 }}>

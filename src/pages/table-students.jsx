@@ -116,8 +116,8 @@ const Table_student = () => {
 
                                 style={{ background: "transparent", borderColor: "transparent" }}
                             ><i
-                                    className="far fa-edit pt-0 mt-0"
-                                    style={{ fontSize: 20, color: "#1e5e5a" }}
+                                    className="fa fa-edit pt-0 mt-0"
+                                    style={{ fontSize: 22, color: "#1e5e5a" }}
                                 />
 
 

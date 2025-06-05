@@ -76,16 +76,13 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                         </NavLink>
                     </li>
                 </ul>
-                <div className="text-center d-none d-md-inline">
-                    <button
-                        className="btn "
-                      
-                        type="button"
-                        onClick={() => setCollapsed(!collapsed)}
-                    >
-                        <FontAwesomeIcon icon={collapsed ? faArrowRight : faArrowLeft} className="icon-size" style={{color:"white"}} />
+                <div class="text-center d-none d-md-inline">
+                    <button class="btn rounded-circle border-0"
+                    onClick={() => setCollapsed(!collapsed)}
+                >
+                    <FontAwesomeIcon icon={collapsed ? faArrowRight : faArrowLeft} className="icon-size" style={{ color: "white" }} />
 
-                    </button>
+                </button>
                 </div>
             </div>
             <div className="mt-auto">

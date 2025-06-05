@@ -16,7 +16,7 @@ const picture = session.user.user_metadata.picture
                     type="button" 
                     onClick={() => setCollapsed(!collapsed)}
                 >
-                    <i className="fas fa-bars fa-2x" />
+                    <i className="fa fa-bars fa-2x" />
                 </button>
 
                 <ul className="navbar-nav flex-nowrap ms-auto user-top">
