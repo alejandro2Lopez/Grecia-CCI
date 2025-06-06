@@ -17,7 +17,7 @@ export const NavbarTop = ({ collapsed, setCollapsed }) => {
 
     return (
         <div className={`navbar-top ${collapsed ? "collapsed" : ""}`}>
-            <div className="container-fluid d-flex justify-content-between align-items-center h-100 px-4">
+            <div className="d-flex justify-content-between align-items-center h-100 px-4">
 
                 {/* Botón logout a la izquierda */}
                 <div
@@ -29,7 +29,7 @@ export const NavbarTop = ({ collapsed, setCollapsed }) => {
                 >
                     <img
                         src={logoCci}
-                        style={{ width: '60px', height: 'auto' }}
+                        style={{ width: '60px'}}
                         alt="Logo"
                     />
                 </div>

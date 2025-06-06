@@ -363,7 +363,11 @@ const Component_basic_information = ({ isMode, isTeacher, language, button_Actio
             </div>
 
         </div>
+         <div className="mb-3" />
+
+             
         {isTeacher && (<div className="row">
+            
             <div className="col">
                 <div className="mb-3">
                     {(isMode === "create" || isMode === "edit") && (
