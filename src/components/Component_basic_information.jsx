@@ -4,7 +4,7 @@
 const Component_basic_information = ({ isMode, isTeacher, language, button_Action, mainErrors, register, onSubmit, watch, isReadOnly, isSubmitting, isEdit }) => {
 
     return (<div className="row">
-        <div className="col">
+        <div className="col-12 col-lg-6">
             <div className="card shadow mb-3">
                 <div className="card-header py-3">
                     <p className="text-primary m-0 fw-bold">Información básica</p>
@@ -278,7 +278,7 @@ const Component_basic_information = ({ isMode, isTeacher, language, button_Actio
                 </div>
             </div>
         </div>
-        <div className="col">
+        <div className="col-12 col-lg-6">
             <div className="card shadow">
                 <div className="card-header py-3">
                     <p className="text-primary m-0 fw-bold">
