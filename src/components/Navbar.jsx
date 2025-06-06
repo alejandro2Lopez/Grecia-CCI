@@ -2,7 +2,7 @@ import React, { useReducer, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut, faArrowRight, faArrowLeft, faReceipt } from '@fortawesome/free-solid-svg-icons';
+import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut, faArrowRight, faArrowLeft, faReceipt, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import logoCci from "/assets/img/logoCCI.png"
 import { authReducer } from "../reducers/AuthReducer";
 import { useAuth } from "../context/AuthContext";
@@ -27,7 +27,7 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
     }
     return (
         <>  <nav
-            className={`navbar align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0 navbar-dark ${collapsed ? "toggled side-bar-collapased" : "no-side-bar-collapased"
+            className={`navbar align-items-start sidebar clean-navbar  sidebar-dark accordion bg-gradient-primary p-0 navbar-dark ${collapsed ? "toggled side-bar-collapased" : "no-side-bar-collapased"
                 }`}
             style={{
                 position: "fixed",
@@ -107,6 +107,68 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
             </div>
 
         </nav>
+            <ul className="nav bottom-nav">
+                <ul className="nav bottom-nav">
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/estudiantes">
+                            <FontAwesomeIcon icon={faUsersRectangle} className="icon-size" />
+                            <p>Estudiantes</p>
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/profesores">
+                            <FontAwesomeIcon icon={faChalkboardUser} className="icon-size" />
+                            <p>Profesores</p>
+                        </NavLink>
+                    </li>
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/gestion-de-pagos">
+                            <FontAwesomeIcon icon={faCalendar} className="icon-size" />
+                            <p>Pagos</p>
+                        </NavLink>
+
+                    </li>
+
+                    <li className="nav-item">
+                        <NavLink className="nav-link" to="/informe-de-pagos">
+                            <FontAwesomeIcon icon={faChartSimple} className="icon-size" />
+                            <p>Informe</p>
+                        </NavLink>
+                    </li>
+                    {/* Menú colapsado */}
+                    <li className="nav-item dropdown">
+                        <button
+                            className="nav-link"
+                            type="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                        >
+                            <FontAwesomeIcon icon={faEllipsisH} className="icon-size" />
+                            <p>Más</p>
+                        </button>
+                        <ul className="dropdown-menu dropdown-menu-end text-center">
+                            <li>
+                                <button
+                                    className="dropdown-item"
+                                    onClick={() => handleLogout()}
+                                >
+                                    <FontAwesomeIcon icon={faSignOut} className="me-2" />
+                                    Cerrar sesión
+                                </button>
+                            </li>
+                            <li>
+                                <NavLink className="dropdown-item" to="/historial-de-pagos">
+                                    <FontAwesomeIcon icon={faReceipt} className="me-2" />
+                                    Historial de pagos
+                                </NavLink>
+
+                            </li>
+                            {/* Puedes agregar más elementos aquí si hay más de 5 */}
+                        </ul>
+                    </li>
+                </ul>
+
+            </ul>
 
         </>
     );
