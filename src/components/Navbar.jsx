@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut, faArrowRight, faArrowLeft, faReceipt } from '@fortawesome/free-solid-svg-icons';
 import logoCci from "/assets/img/logoCCI.png"
-
+import { authReducer } from "../reducers/AuthReducer";
 import { useAuth } from "../context/AuthContext";
 export const Navbar = ({ collapsed, setCollapsed }) => {
     const { sb } = useAuth()
+
+    const [state, dispatch] = useReducer(authReducer, {
+        session: null,
+        loading: true,
+    });
     const navigate = useNavigate();
     function handleLogout() {
         sb.auth.signOut()
             .then(() => {
 
-                localStorage.clear();
-                sessionStorage.clear();
-
-
+                dispatch({ type: 'CLEAR_SESSION' });
                 navigate('/login');
             })
             .catch((error) => {
@@ -83,8 +85,8 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                         </NavLink>
                     </li>
                 </ul>
-                <div class="text-center d-none d-md-inline">
-                    <button class="btn rounded-circle border-0"
+                <div className="text-center d-none d-md-inline">
+                    <button className="btn rounded-circle border-0"
                         onClick={() => setCollapsed(!collapsed)}
                     >
                         <FontAwesomeIcon icon={collapsed ? faArrowRight : faArrowLeft} className="icon-size" style={{ color: "white" }} />

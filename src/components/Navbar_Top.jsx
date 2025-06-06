@@ -4,8 +4,11 @@ import React from "react";
 import { useAuth } from "../context/AuthContext";
 
 export const NavbarTop = ({ collapsed, setCollapsed }) => {
-   const { session, loading } = useAuth();
-const picture = session.user.user_metadata.picture
+    const { session, loading } = useAuth();
+
+
+    const picture = session ? session.user.user_metadata.picture : null;
+
     return (
         <div
             className={`navbar-top ${collapsed ? "collapsed" : ""}`}>
@@ -13,7 +16,7 @@ const picture = session.user.user_metadata.picture
                 <button
                     className="btn btn-link d-md-none rounded-circle me-3"
                     id="sidebarToggleTop"
-                    type="button" 
+                    type="button"
                     onClick={() => setCollapsed(!collapsed)}
                 >
                     <i className="fa fa-bars fa-2x" />
@@ -30,11 +33,11 @@ const picture = session.user.user_metadata.picture
                                 href="#"
                             >
                                 <span className="d-none d-lg-inline me-2 text-gray-600 small navbar-letter">
-                                    {session.user.user_metadata.full_name}
+                                    {session ? session.user.user_metadata.full_name : "Unkown user"}
                                 </span>
                                 <img
                                     className="border rounded-circle img-profile"
-                                    src=  {picture}
+                                    src={picture}
                                 />
                             </a>
                         </div>

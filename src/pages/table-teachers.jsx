@@ -35,10 +35,11 @@ const Table_teacher = () => {
                 setData(res.data);
             }
             setIsLoading(false);
-            setRefresh(false);// <-- importante
+           
         };
         if (refresh) {
             table_st();
+             setRefresh(false);// <-- importante
         }
 
     }, [refresh]);

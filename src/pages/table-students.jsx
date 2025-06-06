@@ -72,7 +72,7 @@ const Table_student = () => {
                     const today = new Date();
                     const paymentDate = new Date(value);
                     const isOverdue = paymentDate < today;
-                    console.log(paymentDate > today);
+                
                     return (
                         <p
                             className="d-xxl-flex justify-content-xxl-center align-items-xxl-center truncate-text"

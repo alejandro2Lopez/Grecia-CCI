@@ -8,7 +8,7 @@ const PublicRouter = ({ children }) => {
 
     if (loading) return <h1>Cargando...</h1>;
 
-    return !session ? children : <Navigate to="/dashboard" />;
+    return !session ? children : <Navigate to="/login" />;
 };
 
 
