@@ -740,7 +740,7 @@ body {
   color: #dddddd;
 }
 
-@media (min-width: 768px) and (max-width: 1800px) {
+/*@media (min-width: 768px) and (max-width: 1800px) {
   .bottom-nav {
     display: none !important;
   }
@@ -748,7 +748,7 @@ body {
   .nav-small-dev {
     display: none !important;
   }
-}
+}*/
 
 @media (min-width: 300px) and (max-width: 768px) {
   .clean-navbar {
