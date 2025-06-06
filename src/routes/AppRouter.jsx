@@ -52,7 +52,7 @@ const AppRouter = () => {
                             <Route path="/mostrar-matricula" element={<Enrollment readOnly={true} />} />
                             <Route path="/informe-de-pagos" element={<Statistics_payment />} />
                                <Route path="/historial-de-pagos" element={<Tablet_history_payment />} />
-                            <Route path="*" element={<Navigate to="/pagina-no-encontrada" />} />
+                            <Route path="*" element={<Navigate to="/estudiantes" />} />
                         </Routes>
                     </Suspense>
                 </div>
