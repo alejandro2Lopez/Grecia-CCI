@@ -13,7 +13,7 @@ const PrivateRouter = ({ children }) => {
 
       if (session) {
         const res = await getFetch(sb, 'auth-review'); // tu endpoint que devuelve status
-
+        console.log(res);
         if (res.data.status === "OK") {
           setAutorizado(true);
         } else {

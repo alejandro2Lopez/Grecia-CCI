@@ -12,7 +12,7 @@ export const getFetch = async (sb, path) => {
     });
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-      // DEBUG: console.error('Error del servidor:', response);
+     console.error('Error del servidor:', response);
       return false;
     }
     else {

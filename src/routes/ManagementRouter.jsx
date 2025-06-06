@@ -5,7 +5,7 @@ import AppRouter from "./AppRouter";
 import Login from "../pages/login";
 import PublicRouter from "./PublicRouter";
 import PrivateRouter from "./PrivateRouter";
-import App from "../App";
+
 const ManagementRouter = () => {
   return (
     <Router>
