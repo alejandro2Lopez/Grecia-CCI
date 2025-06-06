@@ -349,7 +349,7 @@ const Table_enrollment = () => {
     });
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid pb-5">
 
             <h3 className="text-dark mb-4" ></h3>
             <div className="card shadow">

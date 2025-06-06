@@ -22,7 +22,7 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
             // Agrega otros campos si los usas
         });
     });
-    return <><div className="container-fluid">
+    return <><div className="container-fluid pb-5">
         <div className="card shadow">
             <div className="card-header py-3">
                 <div className="row align-items-center">

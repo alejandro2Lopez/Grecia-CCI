@@ -169,7 +169,7 @@ const Teacher: React.FC<any> = ({ readOnly, isEdit, mode }) => {
         <Loading />
     ) : (
 
-        <div className="container-fluid">
+        <div className="container-fluid pb-5">
             <div className="card shadow">
                 <div className="card-header py-3">
                     <div className="row align-items-center">

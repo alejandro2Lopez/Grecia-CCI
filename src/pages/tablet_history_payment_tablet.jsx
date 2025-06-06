@@ -113,7 +113,7 @@ const Tablet_history_payment = () => {
     });
 
     return (
-        <div className="container-fluid">
+        <div className="container-fluid pb-5">
 
             <h3 className="text-dark mb-4" style={{ paddingTop: "10px" }}></h3>
             <div className="card shadow">

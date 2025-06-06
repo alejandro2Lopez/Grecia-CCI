@@ -136,19 +136,20 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
 
     return (<>   {isLoading ? (
         <Loading />
-    ) : (<div className="container-fluid">   <div className="col">
-        <Component_enrollment
-            courseForm={courseForm}
-            courses={courses}
-            teachers={teachers}
-            courseErrors={courseErrors}
-            onSubmit={onSubmit}
-            isEditEnrollment={true}
-            watch={watch} button_Action={"Guardar cambios"}
-            isSubmitting={isSubmitting}
-            isReadOnly={isReadOnly}
-            handleState={handleState}
-        /></div>
+    ) : (<div className="container-fluid pb-5">
+        <div className="col">
+            <Component_enrollment
+                courseForm={courseForm}
+                courses={courses}
+                teachers={teachers}
+                courseErrors={courseErrors}
+                onSubmit={onSubmit}
+                isEditEnrollment={true}
+                watch={watch} button_Action={"Guardar cambios"}
+                isSubmitting={isSubmitting}
+                isReadOnly={isReadOnly}
+                handleState={handleState}
+            /></div>
     </div>)}</>);
 
 
