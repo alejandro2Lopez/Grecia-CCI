@@ -645,3 +645,7 @@ body {
   border-radius: 5px;
   display: inline-block;
 }
+.container-fluid {
+       /* Espacio arriba */
+  padding-right: 8px!important; /* o 16px, o el valor que desees */
+}

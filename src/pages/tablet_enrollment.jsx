@@ -351,7 +351,7 @@ const Table_enrollment = () => {
     return (
         <div className="container-fluid">
 
-            <h3 className="text-dark mb-4" style={{ paddingTop: "10px" }}></h3>
+            <h3 className="text-dark mb-4" ></h3>
             <div className="card shadow">
                 <div className="card-header py-3">
                     <p className="text-primary m-0 fw-bold">Lista de gestión de pagos</p>
