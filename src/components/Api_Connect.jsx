@@ -19,7 +19,7 @@ export const getFetch = async (sb, path) => {
       const response = await res.json().catch(() => {
         throw new Error('Respuesta del servidor no es JSON válido');
       });;
-      console.log(response);
+   //   console.log(response);
       return response;
     }
 

@@ -388,7 +388,7 @@ body {
   }
 }
 
-@media (min-width: 2201px) and (max-width: 2600px) {
+@media (min-width: 2201px) and (max-width: 3000px) {
 
   .sidebar.toggled {
     width: 130px !important;

@@ -9,24 +9,10 @@ import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router";
 import logoCci from "/assets/img/logoCCI-1.png"
 export const NavbarTop = ({ collapsed, setCollapsed }) => {
-    const { session, loading, sb } = useAuth();
+    const { session, loading } = useAuth();
 
-    const [state, dispatch] = useReducer(authReducer, {
-        session: null,
-        loading: true,
-    });
-    const navigate = useNavigate();
-    function handleLogout() {
-        sb.auth.signOut()
-            .then(() => {
-
-                dispatch({ type: 'CLEAR_SESSION' });
-                navigate('/login');
-            })
-            .catch((error) => {
-                console.error('Error cerrando sesión:', error.message);
-            });
-    }
+   
+ 
     const picture = session ? session.user.user_metadata.picture : null;
 
     return (
