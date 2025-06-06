@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChalkboardUser, faChartSimple, faUsersRectangle, faCalendar, faSignOut, faArrowRight, faArrowLeft, faReceipt } from '@fortawesome/free-solid-svg-icons';
 import logoCci from "/assets/img/logoCCI.png"
 
-import { sb } from "./supabaseClient";
+import { useAuth } from "../context/AuthContext";
 export const Navbar = ({ collapsed, setCollapsed }) => {
+    const { sb } = useAuth()
     const navigate = useNavigate();
     function handleLogout() {
         sb.auth.signOut()
