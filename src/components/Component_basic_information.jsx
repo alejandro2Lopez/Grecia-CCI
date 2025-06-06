@@ -264,7 +264,7 @@ const Component_basic_information = ({ isMode, isTeacher, language, button_Actio
                                     className="form-control"
                                     id="username"
 
-                                    placeholder="Franco Almeda"
+                                    placeholder="Pastelero"
                                     type="text"
                                     {...register("p_occupation")} readOnly={isReadOnly} />
 
@@ -297,8 +297,8 @@ const Component_basic_information = ({ isMode, isTeacher, language, button_Actio
                                     className="form-control"
                                     id="p_phone_number"
 
-                                    placeholder="88 888 888"
-                                    type="number"
+                                    placeholder="+50688888888"
+                                    type="text"
                                     {...register("p_phone_number")} readOnly={isReadOnly} />
 
                                 {isReadOnly ? "" : mainErrors.p_phone_number && <p style={{ color: "red" }}> *{mainErrors.p_phone_number.message}</p>}
@@ -314,8 +314,8 @@ const Component_basic_information = ({ isMode, isTeacher, language, button_Actio
                                     className="form-control"
                                     id="p_phone_number_optional"
 
-                                    placeholder="88 888 888"
-                                    type="number"
+                                    placeholder="+50688888888"
+                                    type="text"
                                     {...register("p_phone_number_optional")} readOnly={isReadOnly} />
 
                                 {isReadOnly ? "" : mainErrors.p_phone_number_optional && <p style={{ color: "red" }}> *{mainErrors.p_phone_number_optional.message}</p>}

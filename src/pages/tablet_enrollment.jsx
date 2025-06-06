@@ -186,7 +186,7 @@ const Table_enrollment = () => {
             {
                 accessorKey: 'p_phonenumber',
                 header: 'Teléfono',
-                cell: ({ getValue }) => <span>{getValue()}</span>,
+                cell: ({ getValue }) => <span className="truncate-text"  title={getValue()}>{getValue()}</span>,
             },
             {
                 accessorKey: 'e_course',
@@ -292,12 +292,17 @@ const Table_enrollment = () => {
                     const handleWatch = () => {
                         navigate(`/mostrar-matricula?matricula=${enrollment.e_enrollment_id}`);
                     };
+                     const handleWhatsAppContact = () => {
+                        const url = `https://api.whatsapp.com/send/?phone=${enrollment.p_phonenumber}&text=Hola,%20estimado%20${encodeURIComponent(enrollment.p_full_name)},%20espero%20se%20encuentre%20muy%20bien`;
+
+                        window.open(url, '_blank');
+                    };
 
                     return (
                         <div className="d-flex justify-content-center align-items-center gap-3">
                             {/* Botón WhatsApp */}
                             <button
-                                onClick={handleWatch}
+                                onClick={handleWhatsAppContact}
                                 className="btn p-0 border-0 bg-transparent"
                                 title="WhatsApp"
                             >

@@ -2,6 +2,8 @@
 import TableComponent from "./TableComponent";
 import Component_enrollment from "./Component_enrollment";
 import Component_basic_information from "./Component_basic_information";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDeleteLeft, faTrash } from "@fortawesome/free-solid-svg-icons";
 const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, watch, teachers, courses, handleSubmit, isSubmitting, formatDate, titleAction, register, mainErrors, courseErrors, setEnrolledCourses, resetCourseForm, courseForm, action, onSubmit, onError, isReadOnly, enrolledCourses, isEdit, table, setGlobalFilter, globalFilter, data }) => {
 
     const onAddCourse = courseForm.handleSubmit((courseData) => {
@@ -45,7 +47,7 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
 
                                     style={{ background: "transparent", borderColor: "transparent" }}
                                 ><i
-                                        className="far fa-edit pt-0 mt-0"
+                                        className="fa fa-edit pt-0 mt-0"
                                         style={{ fontSize: 21, color: "#1e5e5a" }}
                                     />
 
@@ -257,11 +259,12 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">
                                                     <button
                                                         type="button"
+                                                        style={{background:"transparent", borderColor:"transparent"}}
                                                         onClick={() =>
                                                             setEnrolledCourses(prev => prev.filter((_, i) => i !== idx))
                                                         }
                                                     >
-                                                        Eliminar
+                                                        <FontAwesomeIcon icon={faTrash} style={{ fontSize: 24, color: "red" }} />
                                                     </button>
                                                 </td>
                                             </tr>

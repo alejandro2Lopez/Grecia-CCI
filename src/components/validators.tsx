@@ -17,9 +17,14 @@ export const email = z.string()
   .email({ message: "Correo inválido" });
 
 // Teléfono CR: 8 dígitos
-export const phoneCR = z.string()
+
+
+export const phoneCR  = z
+  .string()
   .trim()
-  .regex(/^\d{8}$/, { message: "Teléfono inválido. Debe contener 8 dígitos" });
+  .regex(/^\+\d{1,3}\d{7,12}$/, {
+    message: "Teléfono inválido. Debe incluir el prefijo internacional (ej. +506) seguido de 7 a 12 dígitos.",
+  });
 
 // Fecha requerida
 export const requiredDate = z.coerce.date({

@@ -154,11 +154,16 @@ const Table_teacher = () => {
                         navigate(`/mostrar-profesor?profesor=${teacher.personid}`)
 
                     };
+                      const handleWhatsAppContact = () => {
+                        const url = `https://api.whatsapp.com/send/?phone=${teacher.phonenumber}&text=Hola,%20estimado%20${encodeURIComponent(teacher.fullname)},%20espero%20se%20encuentre%20muy%20bien`;
+
+                        window.open(url, '_blank');
+                    };
 
                     return (
                         <div className="d-flex justify-content-center align-items-center gap-2">
                             <button
-                                onClick={showTeacher}
+                                onClick={handleWhatsAppContact}
                                 style={{ background: "transparent", borderColor: "transparent" }}
                             >
 
