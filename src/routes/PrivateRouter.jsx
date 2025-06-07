@@ -11,8 +11,8 @@ const PrivateRouter = ({ children }) => {
 
   useEffect(() => {
     const validarPermiso = async () => {
-        const browserStarted = sessionStorage.getItem('browser-session-started');
-      if (session && !browserStarted) {
+        
+      if (session ) {
         const res = await getFetch(sb, "auth-review");
         if (res) {
           if (res.data.status === "OK") {
