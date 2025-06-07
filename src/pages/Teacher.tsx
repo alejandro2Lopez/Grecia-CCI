@@ -194,7 +194,7 @@ const Teacher: React.FC<any> = ({ readOnly, isEdit, mode }) => {
 
                                         style={{ background: "transparent", borderColor: "transparent" }}
                                     ><i
-                                            className="far fa-edit pt-0 mt-0"
+                                            className="fa fa-edit pt-0 mt-0"
                                             style={{ fontSize: 21, color: "#1e5e5a" }}
                                         />
 

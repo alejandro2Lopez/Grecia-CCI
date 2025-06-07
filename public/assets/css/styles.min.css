@@ -727,7 +727,7 @@ body {
 
 .container-fluid {
   /* Espacio arriba */
-  padding-right: 8px !important;
+  padding-right: 16px !important;
   /* o 16px, o el valor que desees */
 }
 

@@ -44,7 +44,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
 
                                 style={{ background: "transparent", borderColor: "transparent" }}
                             ><i
-                                    className="far fa-edit pt-0 mt-0"
+                                    className="fa fa-edit pt-0 mt-0"
                                     style={{ fontSize: 21, color: "#1e5e5a" }}
                                 />
 
@@ -198,7 +198,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
             <div className="row">
                 <div className="col">
                     <label className="form-label" htmlFor="first_name">
-                        <strong>Observaciones</strong>
+                        <strong>Notas</strong>
                     </label>
                     <input
                         className="form-control"
