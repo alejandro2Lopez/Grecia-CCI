@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { sb } from '../components/supabaseClient';
-import { authReducer, initialState } from '../reducers/AuthReducer';
+import { authReducer } from '../reducers/AuthReducer';
 
 const AuthContext = createContext();
 
@@ -14,17 +14,16 @@ export const AuthProvider = ({ children }) => {
     const browserStarted = sessionStorage.getItem('browser-session-started');
 
     const initSession = async () => {
+      const { data: { session } } = await sb.auth.getSession();
+
       if (!browserStarted) {
+        // 🧹 Cierra sesión si es una nueva instancia de navegador
         sessionStorage.setItem('browser-session-started', 'true');
-        const { data: { session } } = await sb.auth.getSession();
         if (session) {
           await sb.auth.signOut();
-          dispatch({ type: 'CLEAR_SESSION' });
-        } else {
-          dispatch({ type: 'CLEAR_SESSION' });
         }
+        dispatch({ type: 'CLEAR_SESSION' });
       } else {
-        const { data: { session } } = await sb.auth.getSession();
         dispatch({ type: 'SET_SESSION', payload: session });
       }
     };
@@ -40,8 +39,7 @@ export const AuthProvider = ({ children }) => {
     return () => subscription.unsubscribe();
   }, []);
 
-  // 👇 mientras loading, no renderices nada
-  if (state.loading) return <></>; // o <LoadingScreen /> si querés
+  if (state.loading) return <></>;
 
   return (
     <AuthContext.Provider value={{ ...state, sb }}>
@@ -49,6 +47,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
 
 export const useAuth = () => useContext(AuthContext);
