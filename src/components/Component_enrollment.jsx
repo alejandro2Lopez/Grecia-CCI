@@ -95,7 +95,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                         <strong>Fecha de Inicio</strong>
                     </label>
                     <input className="form-control" type="date" readOnly={isReadOnly} {...courseForm.register("e_start_date")}
-                        value={isEditEnrollment
+                        value={!isEditEnrollment
                             ? watch("e_start_date")
                                 ? new Date(watch("e_start_date")).toISOString().split("T")[0]
                                 : ""
@@ -113,7 +113,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                         className="form-control"
                         id="e_schedule"
                         readOnly={isReadOnly}
-                        placeholder="Días; martes y jueves a las 6:00pm"
+                        placeholder="Días martes y jueves a las 6:00pm"
                         type="text"
                         {...courseForm.register("e_schedule")} />
 
@@ -149,7 +149,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                             </label>
                             <select
                                 className="form-select"
-                                {...courseForm.register("e_active",)}
+                                {...courseForm.register("e_active")}
                                 disabled={isReadOnly}
                             >
                                 <optgroup label="Seleccione el estado del estudiante">
@@ -167,7 +167,8 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                     <label className="form-label" htmlFor="first_name">
                         <strong>Fecha de próximo pago</strong>
                     </label>
-                    <input className="form-control" type="date" readOnly={isReadOnly}  {...courseForm.register("e_next_payment")} value={isEditEnrollment
+                    <input className="form-control" type="date" readOnly={isReadOnly}  {...courseForm.register("e_next_payment")} 
+                    value={!isEditEnrollment
                         ? watch("e_next_payment")
                             ? new Date(watch("e_next_payment")).toISOString().split("T")[0]
                             : ""

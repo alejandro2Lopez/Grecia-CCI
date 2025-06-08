@@ -141,11 +141,11 @@ const Add_student: React.FC = () => {
     const courseForm = useForm<CourseFormData>({
         resolver: zodResolver(courseSchema), mode: 'all',
         defaultValues: {
-            e_start_date: new Date(),
+            
             e_schedule: "",
             e_course_payment: 0,
             e_first_course_payment: 1,
-            e_next_payment: new Date(),
+          
             e_enrolment_payment: 0,
             e_course_id: 1,
             e_person_teacher_id: 6,
