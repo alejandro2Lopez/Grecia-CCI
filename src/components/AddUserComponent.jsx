@@ -14,11 +14,12 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
             e_course_payment: 0,
             e_first_course_payment: 1,
             e_enrolment_payment: 0,
-            e_start_date: new Date(),
-            e_next_payment: new Date(),
+            e_start_date: "dd/mm/aa",
+            e_next_payment: "dd/mm/aa",
             e_course_id: 1,
             e_person_teacher_id: 6,
-            e_notes: ""
+            e_notes: "",
+            e_enrollment_paymentSN: 1
             // Agrega otros campos si los usas
         });
     });
@@ -259,7 +260,7 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">
                                                     <button
                                                         type="button"
-                                                        style={{background:"transparent", borderColor:"transparent"}}
+                                                        style={{ background: "transparent", borderColor: "transparent" }}
                                                         onClick={() =>
                                                             setEnrolledCourses(prev => prev.filter((_, i) => i !== idx))
                                                         }
