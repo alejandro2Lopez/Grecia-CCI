@@ -48,7 +48,7 @@ export const formSchema_StudentUpdate = z.object({
 
 export const courseSchema = z.object({
     e_start_date: requiredDate,
-    e_schedule: text_normal,
+    e_schedule: address,
     e_enrolment_payment: requiredPositiveNumber,
     e_next_payment: requiredDate,
     e_course_payment: requiredPositiveNumber, //QUITAR
@@ -56,7 +56,7 @@ export const courseSchema = z.object({
     e_enrollment_paymentSN: requiredPositiveNumber,
     e_course_id: requiredPositiveNumber,
     e_person_teacher_id: requiredPositiveNumber,
-    e_notes: text_normal,
+    e_notes: address,
     e_active: requiredPositiveNumber.optional(),
     e_enrolment_id: requiredPositiveNumber.optional(),
 

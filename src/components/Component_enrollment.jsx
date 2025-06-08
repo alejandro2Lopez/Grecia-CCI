@@ -139,7 +139,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                             <optgroup label="Seleccione el estado de pago">
 
                                 <option value="1" >Cancelado</option>
-                                <option value="2">Pendiente</option>
+                                <option value="0">Pendiente</option>
 
                             </optgroup>
                         </select></>) : (<>
@@ -219,7 +219,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                             <optgroup label="Seleccione el estado de pago">
 
                                 <option value="1" >Cancelado</option>
-                                <option value="2">Pendiente</option>
+                                <option value="0">Pendiente</option>
 
                             </optgroup>
                         </select></>)}

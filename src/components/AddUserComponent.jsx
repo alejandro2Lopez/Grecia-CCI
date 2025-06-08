@@ -139,7 +139,7 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
                                                             className="form-control"
                                                             id="ce_full_name"
 
-                                                            placeholder="user.name"
+                                                            placeholder="Marta Gómez"
                                                             type="text"
                                                             {...register("ce_full_name")} readOnly={isReadOnly} />
 
@@ -174,7 +174,7 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
                                                             className="form-control"
                                                             id="ce_phone_number"
 
-                                                            placeholder="82250"
+                                                            placeholder="+50688995546"
                                                             type="text"
                                                             {...register("ce_phone_number")} readOnly={isReadOnly} />
 
