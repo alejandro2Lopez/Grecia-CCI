@@ -167,13 +167,13 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                     <label className="form-label" htmlFor="first_name">
                         <strong>Fecha de próximo pago</strong>
                     </label>
-                    <input className="form-control" type="date" readOnly={isReadOnly}  {...courseForm.register("e_next_payment")} 
-                    value={!isEditEnrollment
-                        ? watch("e_next_payment")
-                            ? new Date(watch("e_next_payment")).toISOString().split("T")[0]
-                            : ""
-                        : undefined // permite que RHF maneje el valor si no es edición
-                    }
+                    <input className="form-control" type="date" readOnly={isReadOnly}  {...courseForm.register("e_next_payment")}
+                        value={!isEditEnrollment
+                            ? watch("e_next_payment")
+                                ? new Date(watch("e_next_payment")).toISOString().split("T")[0]
+                                : ""
+                            : undefined // permite que RHF maneje el valor si no es edición
+                        }
                     />
 
                     {courseErrors.e_next_payment && <p style={{ color: "red" }}> *{courseErrors.e_next_payment.message}</p>}
@@ -219,7 +219,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                         <select className="form-select" {...courseForm.register("e_enrollment_paymentSN")}>
                             <optgroup label="Seleccione el estado de pago">
 
-                                <option value="1" >Cancelado</option>
+                                <option value="1" selected>Cancelado</option>
                                 <option value="0">Pendiente</option>
 
                             </optgroup>
