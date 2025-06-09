@@ -154,7 +154,7 @@ export const Statistics_payment = () => {
             <div className="col-lg-7 col-xl-8">
                 <div className="card shadow mb-4">
                     <div className="card-header d-flex justify-content-between align-items-center">
-                        <h6 className="text-primary fw-bold m-0">Tendencias del Último Mes</h6>
+                        <h6 className="text-primary fw-bold m-0">Tendencias de las Últimas 4 semanas</h6>
 
                     </div>
                     <div className="card-body">
