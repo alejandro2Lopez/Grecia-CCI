@@ -25,15 +25,19 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
     type CourseFormData = z.infer<typeof courseSchema>;
 
     const courseForm = useForm<CourseFormData>({
-        resolver: zodResolver(courseSchema), mode: 'all',
+        resolver: zodResolver(courseSchema), mode: 'all', defaultValues: {
+            e_start_date: undefined,
+            e_next_payment: undefined, // o new Date()
+        }
 
     });
     const {
         formState: { errors: courseErrors },
         reset: resetCourseForm,
-        watch
+        watch: watch_courseForm,
+
     } = courseForm;
- 
+
     useEffect(() => {
 
 
@@ -80,7 +84,7 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
             setRefresh(false)
 
         }
-    }, [refresh,resetCourseForm]);
+    }, [refresh, resetCourseForm]);
 
 
     const onSubmit = async () => {
@@ -143,8 +147,8 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
                 courseErrors={courseErrors}
                 onSubmit={onSubmit}
                 isEditEnrollment={true}
-                watch={watch}
-                 button_Action={"Guardar cambios"}
+                watch={watch_courseForm}
+                button_Action={"Guardar cambios"}
                 isSubmitting={isSubmitting}
                 isReadOnly={isReadOnly}
                 handleState={handleState}
