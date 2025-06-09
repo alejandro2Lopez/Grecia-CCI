@@ -30,6 +30,7 @@ const Teacher: React.FC<any> = ({ readOnly, isEdit, mode }) => {
         resolver: zodResolver(formSchema_Teacher), mode: 'all',
         defaultValues: {
             p_birth_date: undefined, // o new Date()
+            p_language_id: 1 
         },
 
     });
