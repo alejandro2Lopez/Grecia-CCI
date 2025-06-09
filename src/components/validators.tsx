@@ -39,7 +39,7 @@ export const requiredDate = z.coerce.date({
 export const requiredPositiveNumber = z.coerce.number({
   required_error: "El número es requerido",
   invalid_type_error: "Debe ser un número válido",
-}).min(1, { message: "Debe ser un número mayor o igual a 1" });
+}).min(0, { message: "Debe ser un número mayor o igual a 1" });
 
 // Reusable builder para textos seguros
 export const buildSafeString = (minLen = 1, minMsg = "Este campo es requerido") =>
