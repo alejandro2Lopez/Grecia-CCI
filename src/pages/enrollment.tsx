@@ -80,7 +80,7 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
             setRefresh(false)
 
         }
-    }, []);
+    }, [refresh,resetCourseForm]);
 
 
     const onSubmit = async () => {
@@ -143,7 +143,8 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
                 courseErrors={courseErrors}
                 onSubmit={onSubmit}
                 isEditEnrollment={true}
-                watch={watch} button_Action={"Guardar cambios"}
+                watch={watch}
+                 button_Action={"Guardar cambios"}
                 isSubmitting={isSubmitting}
                 isReadOnly={isReadOnly}
                 handleState={handleState}
