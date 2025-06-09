@@ -18,7 +18,7 @@ import Tablet_history_payment from "../pages/tablet_history_payment_tablet";
 
 
 const Login = lazy(() => import("../pages/login"));
-const Dashboard = lazy(() => import("../pages/dashboard"));
+
 
 const AppRouter = () => {
     const [collapsed, setCollapsed] = useState(false);
