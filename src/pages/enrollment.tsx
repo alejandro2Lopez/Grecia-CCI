@@ -33,9 +33,7 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
         reset: resetCourseForm,
         watch
     } = courseForm;
-    const goback = () => {
-        navigate(-1)
-    }
+ 
     useEffect(() => {
 
 

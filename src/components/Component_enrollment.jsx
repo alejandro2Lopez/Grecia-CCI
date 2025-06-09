@@ -95,7 +95,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                         <strong>Fecha de Inicio</strong>
                     </label>
                     <input className="form-control" type="date" readOnly={isReadOnly} {...courseForm.register("e_start_date")}
-                        value={!isEditEnrollment
+                        value={isEditEnrollment
                             ? watch("e_start_date")
                                 ? new Date(watch("e_start_date")).toISOString().split("T")[0]
                                 : ""
