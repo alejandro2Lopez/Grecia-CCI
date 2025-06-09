@@ -12,9 +12,39 @@ const TableComponent = ({ isLoading, table, setGlobalFilter, globalFilter, data,
 
   return (<>{isLoading ? (
     <Loading></Loading>
-  ) : data.length === 0 ? (
+  ) : data.length === 0 ? (<>
+
+    <div className="row"> <div className="col-md-6">
+      <div className="text-md-left dataTables_filter" id="dataTable_filter">
+        <label className="form-label">
+          <input
+            type="text"
+            placeholder="Buscar..."
+            className="form-control form-control-sm border rounded px-2 py-1 mb-4 w-full"
+            value={globalFilter}
+            onChange={(e) => setGlobalFilter(e.target.value)}
+          />
+        </label>
+
+      </div>
+
+    </div>
+      <div className="col-6 text-end">
+        <div className="text-md-left dataTables_filter" id="dataTable_filter">
+          <label className="form-label">
+            {displayButton && (<button
+              type="submit"
+              className="btn btn-primary"
+              onClick={navigateTo}>
+              <>{botonName}</>
+            </button>)
+            }
+          </label>
+        </div>
+      </div>
+    </div>
     <p className="text-center">No hay datos disponibles.</p>
-  ) : (<div className="p-4">
+  </>) : (<div className="p-4">
 
     <div className="row"> <div className="col-md-6">
       <div className="text-md-left dataTables_filter" id="dataTable_filter">
