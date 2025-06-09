@@ -69,7 +69,7 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
             if (res) {
                 res.data.enrolment[0].e_first_course_payment = 1
                 res.data.enrolment[0].e_enrollment_paymentSN = 1
-                resetCourseForm(courseSchema.parse(res.data.enrolment[0]));
+                resetCourseForm(res.data.enrolment[0]);
 
 
             }
