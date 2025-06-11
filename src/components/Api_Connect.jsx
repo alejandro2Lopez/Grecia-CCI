@@ -77,7 +77,7 @@ export const putFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-       console.error('Error del servidor:', res);
+       console.error('Error del servidor:', res.json());
       return false;
     } else {
       const response = await res.json().catch(() => {
@@ -89,7 +89,7 @@ export const putFetch = async (sb, path, data) => {
     }
   } catch (error) {
     showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
-    console.error('Error de red o ejecución:', error);
+    console.error('Error de red o ejecución:', error.message);
     return false;
   }
 };
