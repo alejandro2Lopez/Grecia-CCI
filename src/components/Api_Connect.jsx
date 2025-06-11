@@ -77,7 +77,7 @@ export const putFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-       console.error('Error del servidor:', res.json());
+       console.error('Error del servidor:', await res.json());
       return false;
     } else {
       const response = await res.json().catch(() => {
