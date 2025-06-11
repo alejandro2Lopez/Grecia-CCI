@@ -161,6 +161,7 @@ const Add_student: React.FC = () => {
     } = courseForm;
     const formatDate = (date: any) => {
         if (!date) return '';
+        console.log(date)
    const [dia, mes, anio] = date.split('/');
   const fecha = new Date(`${anio}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}T00:00:00`);
   
