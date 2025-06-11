@@ -250,14 +250,14 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">{courses.find(t => t.course_id === c.e_course_id)?.description || 'Profesor desconocido'}</td>
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">{teachers.find(t => t.teacher_id === c.e_person_teacher_id)?.teacher_name || 'Profesor desconocido'}</td>
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">
-  {c.e_next_payment ? new Date(c.e_start_date) : 'N/A'}
+  {c.e_start_date ?formatDate(c.e_start_date) : 'N/A'}
 </td>
                                         
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">{c.e_schedule}</td>
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">{c.e_course_payment}</td>
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">{c.e_first_course_payment == "1" ? "Cancelado" : "Pendiente"}</td>
                                         <td className="border border-gray-300 px-2 py-1 text-sm">
-  {c.e_next_payment ? new Date(c.e_next_payment) : 'N/A'}
+  {c.e_next_payment ? formatDate(c.e_next_payment) : 'N/A'}
 </td>
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">{c.e_enrolment_payment}</td>
                                                 <td className="border border-gray-300 px-2 py-1 text-sm">{c.e_enrollment_paymentSN == "1" ? "Cancelado" : "Pendiente"}</td>
