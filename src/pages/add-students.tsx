@@ -162,12 +162,12 @@ const Add_student: React.FC = () => {
     const formatDate = (date: any) => {
          if (!date) return '';
 
-  // Crear una nueva fecha local (sin hora y sin conversión a UTC)
-  const localDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+ 
 
-  const year = localDate.getFullYear();
-  const month = String(localDate.getMonth() + 1).padStart(2, '0');
-  const day = String(localDate.getDate()).padStart(2, '0');
+  // Usa los métodos UTC para obtener los componentes de la fecha basados en la hora UTC.
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+  const day = String(date.getUTCDate()).padStart(2, '0');
 
   return `${year}-${month}-${day}`;
         
