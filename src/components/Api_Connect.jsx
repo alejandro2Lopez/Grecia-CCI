@@ -77,14 +77,14 @@ export const putFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-       console.error('Error del servidor:', response);
+       console.error('Error del servidor:', res);
       return false;
     } else {
       const response = await res.json().catch(() => {
         throw new Error('Respuesta del servidor no es JSON válido');
 
       });
-      console.log(response);
+    
       return response;
     }
   } catch (error) {
