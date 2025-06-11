@@ -161,15 +161,13 @@ const Add_student: React.FC = () => {
     } = courseForm;
     const formatDate = (date: any) => {
         if (!date) return '';
-        console.log(date)
-   const [dia, mes, anio] = date.split('/');
-  const fecha = new Date(`${anio}-${mes.padStart(2, '0')}-${dia.padStart(2, '0')}T00:00:00`);
-  
-  // Ajustar a fecha local (extrae yyyy-mm-dd en zona horaria local)
-  const year = fecha.getFullYear();
-  const month = String(fecha.getMonth() + 1).padStart(2, '0'); // Los meses comienzan en 0
-  const day = String(fecha.getDate()).padStart(2, '0');
-  
+       
+   date.setHours(0, 0, 0, 0);
+
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
   return `${year}-${month}-${day}`;
         
     };
