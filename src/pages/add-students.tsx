@@ -160,13 +160,14 @@ const Add_student: React.FC = () => {
         watch: watchCourse
     } = courseForm;
     const formatDate = (date: any) => {
-        if (!date) return '';
-       
-   date.setHours(0, 0, 0, 0);
+         if (!date) return '';
 
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
+  // Crear una nueva fecha local (sin hora y sin conversión a UTC)
+  const localDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  const year = localDate.getFullYear();
+  const month = String(localDate.getMonth() + 1).padStart(2, '0');
+  const day = String(localDate.getDate()).padStart(2, '0');
 
   return `${year}-${month}-${day}`;
         
