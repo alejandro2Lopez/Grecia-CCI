@@ -19,7 +19,7 @@ export const getFetch = async (sb, path) => {
       const response = await res.json().catch(() => {
         throw new Error('Respuesta del servidor no es JSON válido');
       });;
-   //   console.log(response);
+      //   console.log(response);
       return response;
     }
 
@@ -44,7 +44,7 @@ export const postFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-     console.error('Error del servidor:', response);
+      console.error('Error del servidor:', response);
       return false;
     }
     else {
@@ -77,14 +77,14 @@ export const putFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-       console.error('Error del servidor:', await res.json());
+      console.error('Error del servidor:', await res.json());
       return false;
     } else {
       const response = await res.json().catch(() => {
         throw new Error('Respuesta del servidor no es JSON válido');
 
       });
-    
+
       return response;
     }
   } catch (error) {
@@ -109,7 +109,7 @@ export const deleteFetch = async (sb, path, data = null) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-         console.log(res);
+      console.log(await res.json());
       return false;
     } else {
       const response = await res.json().catch(() => {
@@ -119,7 +119,7 @@ export const deleteFetch = async (sb, path, data = null) => {
       return response;
     }
   } catch (error) {
-       console.log(error.message);
+    console.log(error.message);
     showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
     return false;
   }
