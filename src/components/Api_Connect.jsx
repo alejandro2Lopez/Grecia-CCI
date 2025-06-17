@@ -109,6 +109,7 @@ export const deleteFetch = async (sb, path, data = null) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
+         console.log(res);
       return false;
     } else {
       const response = await res.json().catch(() => {
@@ -118,6 +119,7 @@ export const deleteFetch = async (sb, path, data = null) => {
       return response;
     }
   } catch (error) {
+       console.log(error.message);
     showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
     return false;
   }
