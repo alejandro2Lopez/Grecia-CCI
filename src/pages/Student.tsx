@@ -323,6 +323,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                         }
                     });
                     const res = await deleteFetch(sb, `enrollment/${estudiante.e_enrolment_id}`);
+                    console.log(res)
                     if (res.data) {
                         Swal.fire({
                             title: 'Registro completo!',
