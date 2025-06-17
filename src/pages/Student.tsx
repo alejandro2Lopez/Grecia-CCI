@@ -373,7 +373,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                             style={{ background: "transparent", borderColor: "transparent" }}
                             onClick={handleDelete}
                         >
-                            <FontAwesomeIcon icon={faTrash} style={{ fontSize: 24, color: "red" }} />
+                            <FontAwesomeIcon icon={faTrash} style={{ fontSize: 20, color: "red" }} />
                         </button>)
                         }
                     </div>
