@@ -84,10 +84,12 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                 const res = await getFetch(sb, `hello-world/${paramValue}`);
 
                 if (res && res.data && Array.isArray(res.data.student) && res.data.student.length > 0) {
+                  
                     reset(res.data.student[0]);
                     setData(res.data.enrolment);
                     setIsLoading(false);
                 } else {
+                  console.log(res)
                     throw new Error('Estructura inesperada en la respuesta del servidor.');
                 }
 
