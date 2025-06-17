@@ -368,7 +368,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
 
 
                         </button>
-                        {data.length < 1 && (<button
+                        {data.length < 0 && (<button
                             type="button"
                             style={{ background: "transparent", borderColor: "transparent" }}
                             onClick={handleDelete}
