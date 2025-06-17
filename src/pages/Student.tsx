@@ -5,12 +5,14 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { formSchema_StudentUpdate, courseSchema } from "../components/schemas";
-import { getFetch, postFetch, putFetch } from "../components/Api_Connect";
+import { deleteFetch, getFetch, postFetch, putFetch } from "../components/Api_Connect";
 import { useAuth } from "../context/AuthContext";
 import Swal from 'sweetalert2';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import AddUserComponent from "../components/AddUserComponent";
 import { schema_params } from '../components/validators';
+import { faDeleteLeft, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 //Editar o ver 
 
 import {
@@ -310,7 +312,41 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                     navigate(`/editar-matricula?matricula=${estudiante.e_enrolment_id}`)
 
                 };
+                const handleDelete = async () => {
+                    Swal.fire({
+                        title: 'Registrando pago...',
+                        text: 'Por favor espera un momento',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        didOpen: () => {
+                            Swal.showLoading();
+                        }
+                    });
+                    const res = await deleteFetch(sb, `enrollment/${estudiante.e_enrolment_id}`);
+                    if (res.data) {
+                        Swal.fire({
+                            title: 'Registro completo!',
+                            text: 'Se ha registrado correctamente el pago del estudiante',
+                            icon: 'success',
+                            confirmButtonText: 'Aceptar',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            backdrop: true
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                setRefresh(true);
 
+
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Ocurrió un problema al eliminar la matricula del estudiante. Intenta de nuevo.'
+                        });
+                    }
+                }
 
 
                 return (
@@ -328,7 +364,13 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
 
 
                         </button>
-
+                        <button
+                            type="button"
+                            style={{ background: "transparent", borderColor: "transparent" }}
+                            onClick={handleDelete}
+                        >
+                            <FontAwesomeIcon icon={faTrash} style={{ fontSize: 24, color: "red" }} />
+                        </button>
                     </div>
                 );
             },
