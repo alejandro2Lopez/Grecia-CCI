@@ -84,12 +84,12 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                 const res = await getFetch(sb, `hello-world/${paramValue}`);
 
                 if (res && res.data && Array.isArray(res.data.student) && res.data.student.length > 0) {
-                  
+
                     reset(res.data.student[0]);
                     setData(res.data.enrolment);
                     setIsLoading(false);
                 } else {
-                  console.log(res)
+                    console.log(res)
                     throw new Error('Estructura inesperada en la respuesta del servidor.');
                 }
 
@@ -315,8 +315,9 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
 
                 };
                 const handleDelete = async () => {
+
                     Swal.fire({
-                        title: 'Registrando pago...',
+                        title: 'Eliminando estudiante ...',
                         text: 'Por favor espera un momento',
                         allowOutsideClick: false,
                         allowEscapeKey: false,
@@ -367,13 +368,14 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
 
 
                         </button>
-                        <button
+                        {data.length > 1 && (<button
                             type="button"
                             style={{ background: "transparent", borderColor: "transparent" }}
                             onClick={handleDelete}
                         >
                             <FontAwesomeIcon icon={faTrash} style={{ fontSize: 24, color: "red" }} />
-                        </button>
+                        </button>)
+                        }
                     </div>
                 );
             },
