@@ -19,7 +19,7 @@ export const email = z.string()
 // Teléfono CR: 8 dígitos
 
 
-export const phoneCR  = z
+export const phoneCR = z
   .string()
   .trim()
   .regex(/^\+\d{1,3}\d{7,12}$/, {
@@ -40,6 +40,27 @@ export const requiredPositiveNumber = z.coerce.number({
   required_error: "El número es requerido",
   invalid_type_error: "Debe ser un número válido",
 }).min(0, { message: "Debe ser un número mayor o igual a 0" });
+
+export const buildSafeID = (
+  minLen = 1,
+  minMsg = "Este campo es requerido"
+) =>
+  z
+    .string()
+    .trim()
+    .min(minLen, { message: minMsg })
+    .refine(
+      val => !/<[^>]*script|onerror=|onload=|<img/i.test(val),
+      { message: "Contenido inválido detectado (script o carga maliciosa)" }
+    )
+    .refine(
+      val => !val.includes(" "),
+      { message: "No se permiten espacios en blanco" }
+    )
+    .refine(
+      val => !val.includes("-"),
+      { message: "No se permiten guiones (-)" }
+    );
 
 // Reusable builder para textos seguros
 export const buildSafeString = (minLen = 1, minMsg = "Este campo es requerido") =>
@@ -62,7 +83,7 @@ export const text_normal = z.string()
   });
 
 // Campos reutilizables
-export const idCard = buildSafeString(5, "Cédula inválida");
+export const idCard = buildSafeID(5, "Cédula inválida");
 export const nationality = buildSafeString();
 export const address = buildSafeString();
 
