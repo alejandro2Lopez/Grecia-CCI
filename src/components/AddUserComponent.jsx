@@ -17,7 +17,7 @@ const AddUserComponent = ({ watchCourse, readOnly, button_action, handleState, w
             e_start_date: new Date(),
             e_next_payment: new Date(),
             e_course_id: 1,
-            e_person_teacher_id: 6,
+            e_person_teacher_id: -1,
             e_notes: "",
             e_enrollment_paymentSN: 1
             // Agrega otros campos si los usas
