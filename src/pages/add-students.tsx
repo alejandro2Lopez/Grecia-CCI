@@ -150,7 +150,7 @@ const Add_student: React.FC = () => {
           
             e_enrolment_payment: 0,
             e_course_id: 1,
-            e_person_teacher_id: 6,
+            e_person_teacher_id: -1,
             e_notes: "",
             e_enrollment_paymentSN: 1
 

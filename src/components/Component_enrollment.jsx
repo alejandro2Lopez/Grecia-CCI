@@ -84,7 +84,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                             {...courseForm.register("e_person_teacher_id", { valueAsNumber: true })}
                         >
                             <optgroup label="Seleccione al profesor a cargo del curso">
-                                <option value="">-- Seleccione un profesor --</option>
+                                <option value={-1}>-- Seleccione un profesor --</option>
                                 {teachers.map(op => (
                                     <option key={op.teacher_id} value={op.teacher_id}>
                                         {op.teacher_name}
@@ -92,6 +92,7 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                                 ))}
                             </optgroup>
                         </select>
+                             {courseErrors.e_person_teacher_id && <p style={{ color: "red" }}> *{courseErrors.e_person_teacher_id.message}</p>}
                     </div>
                 </div>
             </div>
