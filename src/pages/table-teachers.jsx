@@ -13,7 +13,7 @@ import TableComponent from '../components/TableComponent'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { downloadTableToExcel } from '../components/download_file';
 import Swal from 'sweetalert2';
 
@@ -35,11 +35,11 @@ const Table_teacher = () => {
                 setData(res.data);
             }
             setIsLoading(false);
-           
+
         };
         if (refresh) {
             table_st();
-             setRefresh(false);// <-- importante
+            setRefresh(false);// <-- importante
         }
 
     }, [refresh]);
@@ -116,7 +116,7 @@ const Table_teacher = () => {
                         setIsSubmittingStatus(false);
                         setSubmittingRowIndex(null); // Limpiar después de terminar
                         setRefresh(true);
-                         setIsLoading(true);
+                        setIsLoading(true);
                     };
 
                     const isThisRowLoading = isSubmittingStatus && submittingRowIndex === rowIndex;
@@ -155,12 +155,41 @@ const Table_teacher = () => {
                         navigate(`/mostrar-profesor?profesor=${teacher.personid}`)
 
                     };
-                      const handleWhatsAppContact = () => {
+                    const handleWhatsAppContact = () => {
                         const url = `https://api.whatsapp.com/send/?phone=${teacher.phonenumber}&text=Hola,%20estimado%20${encodeURIComponent(teacher.fullname)},%20espero%20se%20encuentre%20muy%20bien`;
 
                         window.open(url, '_blank');
                     };
+                    const handleDeleteTeacher = async () => {
 
+                        Swal.fire({
+                            title: 'Eliminado profesor...',
+                            text: 'Por favor espera un momento',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+                        const resultado = await deleteFetch(sb, `hello-world/${estudiante.personid}`);
+                        console.log(resultado)
+
+                        if (resultado) {
+
+                            setRefresh(true);
+                            Swal.fire({
+                                title: 'El profesor ha sido eliminado!',
+                                text: 'El profesor ha sido eliminado correctamente.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                backdrop: true,
+                            });
+                        }
+
+
+                    };
                     return (
                         <div className="d-flex justify-content-center align-items-center gap-2">
                             <button
@@ -193,6 +222,13 @@ const Table_teacher = () => {
                                 />
 
                             </button>
+                            {!teacher.hasGroups && (<button
+                                type="button"
+                                style={{ background: "transparent", borderColor: "transparent" }}
+                                onClick={handleDeleteTeacher}
+                            >
+                                <FontAwesomeIcon icon={faTrash} style={{ fontSize: 18, color: "red" }} />
+                            </button>)}
                         </div>
                     );
                 },
