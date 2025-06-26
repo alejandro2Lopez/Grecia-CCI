@@ -172,7 +172,7 @@ const Table_teacher = () => {
                             }
                         });
                         const resultado = await deleteFetch(sb, `teacher/${teacher.personid}`);
-                        console.log(resultado)
+                        console.log(teacher.personid);
 
                         if (resultado) {
 
