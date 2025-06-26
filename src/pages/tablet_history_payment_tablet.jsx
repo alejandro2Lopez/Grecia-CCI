@@ -29,6 +29,7 @@ const Tablet_history_payment = () => {
             const res = await getFetch(sb, 'payment/true');
             if (res.data) {
                 setData(res.data);
+                console.log(res.data);
             }
             setIsLoading(false); // <-- importante
         };
