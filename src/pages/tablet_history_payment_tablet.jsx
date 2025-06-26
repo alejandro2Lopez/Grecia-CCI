@@ -24,6 +24,7 @@ const Tablet_history_payment = () => {
     const [isLoading, setIsLoading] = useState(true);
     const { sb } = useAuth();
     const navigate = useNavigate();
+    const [refresh, setRefresh] = useState(true);
     useEffect(() => {
         const table_st = async () => {
             const res = await getFetch(sb, 'payment/true');
@@ -33,8 +34,11 @@ const Tablet_history_payment = () => {
             }
             setIsLoading(false); // <-- importante
         };
-        table_st();
-    }, []);
+        if (refresh) {
+            table_st();
+        }
+
+    }, [refresh]);
 
 
     const columns = useMemo(
@@ -114,7 +118,7 @@ const Tablet_history_payment = () => {
                             allowEscapeKey: false,
                         }).then(async (result) => {
                             if (result.isConfirmed) {
-                               
+
                                 Swal.fire({
                                     title: 'Eliminando pago...',
                                     text: 'Por favor espera un momento',
@@ -172,7 +176,7 @@ const Tablet_history_payment = () => {
 
 
         ],
-        []
+        [refresh, setRefresh]
     );
 
 
