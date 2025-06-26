@@ -29,6 +29,7 @@ const Table_student = () => {
             const res = await getFetch(sb, 'hello-world/');
             if (res.data) {
                 setData(res.data);
+                console.log(res.data)
             }
             setIsLoading(false);
         };
