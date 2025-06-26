@@ -171,7 +171,7 @@ const Table_teacher = () => {
                                 Swal.showLoading();
                             }
                         });
-                        const resultado = await deleteFetch(sb, `hello-world/${teacher.personid}`);
+                        const resultado = await deleteFetch(sb, `teacher/${teacher.personid}`);
                         console.log(resultado)
 
                         if (resultado) {
