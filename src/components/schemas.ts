@@ -6,7 +6,8 @@ import {
     requiredPositiveNumber,
     idCard,
     nationality,
-    address, text_normal
+    address, text_normal,
+    requiredPositiveNumberTeacher
 } from './validators';
 import { z } from 'zod';
 
@@ -55,7 +56,7 @@ export const courseSchema = z.object({
     e_first_course_payment: requiredPositiveNumber, //QUITAR
     e_enrollment_paymentSN: requiredPositiveNumber,
     e_course_id: requiredPositiveNumber,
-    e_person_teacher_id: requiredPositiveNumber,
+    e_person_teacher_id: requiredPositiveNumberTeacher,
     e_notes: address,
     e_active: requiredPositiveNumber.optional(),
     e_enrolment_id: requiredPositiveNumber.optional(),

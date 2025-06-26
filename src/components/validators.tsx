@@ -40,7 +40,10 @@ export const requiredPositiveNumber = z.coerce.number({
   required_error: "El número es requerido",
   invalid_type_error: "Debe ser un número válido",
 }).min(0, { message: "Debe ser un número mayor o igual a 0" });
-
+export const requiredPositiveNumberTeacher = z.coerce.number({
+  required_error: "El número es requerido",
+  invalid_type_error: "Debe ser un número válido",
+}).min(0, { message: "Debe agregar el profesor" });
 export const buildSafeID = (
   minLen = 1,
   minMsg = "Este campo es requerido"
