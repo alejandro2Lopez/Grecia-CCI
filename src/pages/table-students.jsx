@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router';
 import { faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { downloadTableToExcel } from '../components/download_file';
 import { setRef } from '@mui/material';
-
+import Swal from 'sweetalert2';
 const Table_student = () => {
     const [data, setData] = useState(() => []);
     const [globalFilter, setGlobalFilter] = useState('');
