@@ -78,11 +78,17 @@ const Component_enrollment = ({ button_Action, courseForm, courses, teachers, co
                         <label className="form-label" htmlFor="email">
                             <strong>Profesor</strong>
                         </label>
-                        <select className="form-select" disabled={isReadOnly} {...courseForm.register("e_person_teacher_id", { valueAsNumber: true })}>
+                        <select
+                            className="form-select"
+                            disabled={isReadOnly}
+                            {...courseForm.register("e_person_teacher_id", { valueAsNumber: true })}
+                        >
                             <optgroup label="Seleccione al profesor a cargo del curso">
-
+                                <option value="">-- Seleccione un profesor --</option>
                                 {teachers.map(op => (
-                                    <option key={op.teacher_id} value={op.teacher_id}>{op.teacher_name}</option>
+                                    <option key={op.teacher_id} value={op.teacher_id}>
+                                        {op.teacher_name}
+                                    </option>
                                 ))}
                             </optgroup>
                         </select>
