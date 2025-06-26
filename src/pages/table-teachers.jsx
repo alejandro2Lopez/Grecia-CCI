@@ -92,7 +92,7 @@ const Table_teacher = () => {
                             teacher: { p_person_id: rowData.personid, p_active: newValue },
                         };
 
-                        const resultado = await deleteFetch(sb, "teache/", fullData);
+                        const resultado = await deleteFetch(sb, "teacher", fullData);
                         console.log(resultado);
 
                         if (resultado) {

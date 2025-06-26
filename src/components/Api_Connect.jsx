@@ -92,8 +92,7 @@ export const putFetch = async (sb, path, data) => {
     console.error('Error de red o ejecución:', error.message);
     return false;
   }
-};
-export const deleteFetch = async (sb, path, data = null) => {
+};export const deleteFetch = async (sb, path, data = null) => {
   try {
     const session = await sb.auth.getSession();
     const access_token = session.data.session?.access_token;
@@ -104,7 +103,7 @@ export const deleteFetch = async (sb, path, data = null) => {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${access_token}`,
       },
-      body: data ? JSON.stringify(data) : null,
+      body: JSON.stringify(data || {}), // 👈 Siempre enviamos JSON válido
     });
 
     if (!res.ok) {

@@ -13,14 +13,16 @@ import TableComponent from '../components/TableComponent'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { downloadTableToExcel } from '../components/download_file';
+import { setRef } from '@mui/material';
 
 const Table_student = () => {
     const [data, setData] = useState(() => []);
     const [globalFilter, setGlobalFilter] = useState('');
     const [isLoading, setIsLoading] = useState(true);
     const { sb } = useAuth();
+    const [refresh, setRefresh] = useState(true);
     const navigate = useNavigate();
     useEffect(() => {
         const table_st = async () => {
@@ -30,8 +32,12 @@ const Table_student = () => {
             }
             setIsLoading(false);
         };
-        table_st();
-    }, []);
+        if (refresh) {
+            table_st();
+            setRefresh(false);
+        }
+
+    }, [refresh, setRefresh]);
 
 
     const columns = useMemo(
@@ -72,7 +78,7 @@ const Table_student = () => {
                     const today = new Date();
                     const paymentDate = new Date(value);
                     const isOverdue = paymentDate < today;
-                
+
                     return (
                         <p
                             className="d-xxl-flex justify-content-xxl-center align-items-xxl-center truncate-text"
@@ -102,6 +108,36 @@ const Table_student = () => {
 
                     const handleWatchStudent = () => {
                         navigate(`/mostrar-estudiante?estudiante=${estudiante.personid}`)
+                    };
+                    const handleDeleteStudent = async () => {
+                       
+                          Swal.fire({
+                                           title: 'Eliminado estudiante...',
+                                           text: 'Por favor espera un momento',
+                                           allowOutsideClick: false,
+                                           allowEscapeKey: false,
+                                           didOpen: () => {
+                                               Swal.showLoading();
+                                           }
+                                       });
+                        const resultado = await deleteFetch(sb, `hello-world/${estudiante.personid}`);
+                       
+
+                        if (resultado) {
+
+                            setRefresh(true);
+                            Swal.fire({
+                                title: 'El estudiante ha sido eliminado!',
+                                text: 'El estudiante ha sido eliminado correctamente.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                backdrop: true,
+                            });
+                        }
+
+
                     };
                     const handleWhatsAppContact = () => {
                         const url = `https://api.whatsapp.com/send/?phone=${estudiante.phonenumber}&text=Hola,%20estimado%20${encodeURIComponent(estudiante.fullname)},%20espero%20se%20encuentre%20muy%20bien`;
@@ -140,12 +176,19 @@ const Table_student = () => {
                                 />
 
                             </button>
+                            {!estudiante.hasPayment&&(<button
+                                                        type="button"
+                                                        style={{ background: "transparent", borderColor: "transparent" }}
+                                                        onClick={handleDeleteStudent}
+                                                    >
+                                                        <FontAwesomeIcon icon={faTrash} style={{ fontSize: 18, color: "red" }} />
+                                                    </button>)}
                         </div>
                     );
                 },
             },
         ],
-        []
+        [setRefresh]
     );
 
 
