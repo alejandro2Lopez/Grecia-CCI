@@ -177,7 +177,7 @@ const Table_student = () => {
                                 />
 
                             </button>
-                            {!estudiante.hasPayment&&(<button
+                            {!estudiante.haspayment&&(<button
                                                         type="button"
                                                         style={{ background: "transparent", borderColor: "transparent" }}
                                                         onClick={handleDeleteStudent}
