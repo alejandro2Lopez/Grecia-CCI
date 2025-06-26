@@ -129,7 +129,7 @@ const Teacher: React.FC<any> = ({ readOnly, isEdit, mode }) => {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         setRefresh(true);
-                        navigate("profesores");
+                        navigate("/profesores");
                     }
                 });
             }
