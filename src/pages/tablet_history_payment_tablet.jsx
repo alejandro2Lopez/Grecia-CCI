@@ -7,15 +7,15 @@ import {
     getSortedRowModel,
     flexRender,
 } from '@tanstack/react-table';
-import { getFetch } from '../components/Api_Connect';
+import { getFetch, deleteFetch } from '../components/Api_Connect';
 import { useAuth } from '../context/AuthContext';
 import TableComponent from '../components/TableComponent'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faDownload, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { downloadTableToExcel } from '../components/download_file';
-
+import Swal from 'sweetalert2';
 
 const Tablet_history_payment = () => {
 
@@ -92,6 +92,82 @@ const Tablet_history_payment = () => {
                 accessorKey: 'p_total',
                 header: 'Monto pagado',
                 cell: ({ getValue }) => <span>{getValue()}</span>,
+            },
+            {
+                id: 'acciones',
+                header: '',
+                cell: ({ row }) => {
+                    const payment = row.original;
+
+
+                    const handleDeletePayment = async () => {
+
+                        Swal.fire({
+                            title: '¿Estás seguro?',
+                            text: '¿Deseas eliminar este pago?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonText: 'Sí, eliminar',
+                            cancelButtonText: 'Cancelar',
+                            reverseButtons: true,
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                        }).then(async (result) => {
+                            if (result.isConfirmed) {
+                               
+                                Swal.fire({
+                                    title: 'Eliminando pago...',
+                                    text: 'Por favor espera un momento',
+                                    allowOutsideClick: false,
+                                    allowEscapeKey: false,
+                                    didOpen: () => {
+                                        Swal.showLoading();
+                                    }
+                                });
+
+                                try {
+                                    const resultado = await deleteFetch(sb, `payment/${payment.p_payment_id}`);
+                                    console.log(payment.p_payment_id);
+
+                                    if (resultado) {
+                                        setRefresh(true);
+                                        Swal.fire({
+                                            title: 'Pago eliminado',
+                                            text: 'El pago fue eliminado correctamente.',
+                                            icon: 'success',
+                                            confirmButtonText: 'Aceptar',
+                                            allowOutsideClick: false,
+                                            allowEscapeKey: false,
+                                            backdrop: true,
+                                        });
+                                    }
+                                } catch (error) {
+                                    Swal.fire({
+                                        title: 'Error',
+                                        text: 'Ocurrió un problema al eliminar el pago.',
+                                        icon: 'error',
+                                        confirmButtonText: 'Aceptar'
+                                    });
+                                }
+                            }
+                        });
+
+
+                    };
+                    return (
+                        <div className="d-flex justify-content-center align-items-center gap-2">
+
+                            {payment.is_today
+                                && (<button
+                                    type="button"
+                                    style={{ background: "transparent", borderColor: "transparent" }}
+                                    onClick={handleDeletePayment}
+                                >
+                                    <FontAwesomeIcon icon={faTrash} style={{ fontSize: 18, color: "red" }} />
+                                </button>)}
+                        </div>
+                    );
+                },
             },
 
 
