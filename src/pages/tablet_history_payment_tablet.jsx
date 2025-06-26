@@ -35,10 +35,11 @@ const Tablet_history_payment = () => {
             setIsLoading(false); // <-- importante
         };
         if (refresh) {
+            setRefresh(false);
             table_st();
         }
 
-    }, [refresh]);
+    }, [refresh, setRefresh]);
 
 
     const columns = useMemo(
