@@ -123,6 +123,8 @@ const Add_student: React.FC = () => {
                     navigate('/estudiantes'); // o usa navigate(...)
                 }
             });
+        }else{
+           setIsSubmitting(false) 
         }
 
     };
