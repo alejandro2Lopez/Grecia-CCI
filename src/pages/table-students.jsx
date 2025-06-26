@@ -7,7 +7,7 @@ import {
     getSortedRowModel,
     flexRender,
 } from '@tanstack/react-table';
-import { getFetch } from '../components/Api_Connect';
+import { getFetch,deleteFetch } from '../components/Api_Connect';
 import { useAuth } from '../context/AuthContext';
 import TableComponent from '../components/TableComponent'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
