@@ -222,7 +222,7 @@ const Table_teacher = () => {
                                 />
 
                             </button>
-                            {teacher.hasGroups && (<button
+                            {!teacher.hasgroups && (<button
                                 type="button"
                                 style={{ background: "transparent", borderColor: "transparent" }}
                                 onClick={handleDeleteTeacher}
