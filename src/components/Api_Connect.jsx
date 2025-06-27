@@ -5,7 +5,7 @@ export const getFetch = async (sb, path) => {
   try {
     const session = await sb.auth.getSession();
     const access_token = session.data.session?.access_token;
-    const res = await fetch(`https://bweenuyuwknostqrmvuf.supabase.co/functions/v1/${path}`, {
+    const res = await fetch(`https://vhdqfwgegjootyegkllk.supabase.co/functions/v1/${path}`, {
       headers: {
         Authorization: `Bearer ${access_token}`,
       },
@@ -33,7 +33,7 @@ export const postFetch = async (sb, path, data) => {
   try {
     const session = await sb.auth.getSession();
     const access_token = session.data.session?.access_token;
-    const res = await fetch(`https://bweenuyuwknostqrmvuf.supabase.co/functions/v1/${path}/`, {
+    const res = await fetch(`https://vhdqfwgegjootyegkllk.supabase.co/functions/v1/${path}/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -66,7 +66,7 @@ export const putFetch = async (sb, path, data) => {
     const session = await sb.auth.getSession();
     const access_token = session.data.session?.access_token;
 
-    const res = await fetch(`https://bweenuyuwknostqrmvuf.supabase.co/functions/v1/${path}/`, {
+    const res = await fetch(`https://vhdqfwgegjootyegkllk.supabase.co/functions/v1/${path}/`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ export const putFetch = async (sb, path, data) => {
     const session = await sb.auth.getSession();
     const access_token = session.data.session?.access_token;
 
-    const res = await fetch(`https://bweenuyuwknostqrmvuf.supabase.co/functions/v1/${path}`, {
+    const res = await fetch(`https://vhdqfwgegjootyegkllk.supabase.co/functions/v1/${path}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
