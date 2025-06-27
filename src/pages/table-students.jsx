@@ -110,36 +110,7 @@ const Table_student = () => {
                     const handleWatchStudent = () => {
                         navigate(`/mostrar-estudiante?estudiante=${estudiante.personid}`)
                     };
-                    const handleDeleteStudent = async () => {
-                       
-                          Swal.fire({
-                                           title: 'Eliminado estudiante...',
-                                           text: 'Por favor espera un momento',
-                                           allowOutsideClick: false,
-                                           allowEscapeKey: false,
-                                           didOpen: () => {
-                                               Swal.showLoading();
-                                           }
-                                       });
-                        const resultado = await deleteFetch(sb, `hello-world/${estudiante.personid}`);
-                     //  console.log(resultado)
-
-                        if (resultado) {
-
-                            setRefresh(true);
-                            Swal.fire({
-                                title: 'El estudiante ha sido eliminado!',
-                                text: 'El estudiante ha sido eliminado correctamente.',
-                                icon: 'success',
-                                confirmButtonText: 'Aceptar',
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                backdrop: true,
-                            });
-                        }
-
-
-                    };
+                  
                     const handleWhatsAppContact = () => {
                         const url = `https://api.whatsapp.com/send/?phone=${estudiante.phonenumber}&text=Hola,%20estimado%20${encodeURIComponent(estudiante.fullname)},%20espero%20se%20encuentre%20muy%20bien`;
 
@@ -177,6 +148,52 @@ const Table_student = () => {
                                 />
 
                             </button>
+                            
+                        </div>
+                    );
+                },
+            },
+            {
+                id: 'acciones-delete',
+                header: '',
+                cell: ({ row }) => {
+                    const estudiante = row.original;
+
+                  
+                    const handleDeleteStudent = async () => {
+                       
+                          Swal.fire({
+                                           title: 'Eliminado estudiante...',
+                                           text: 'Por favor espera un momento',
+                                           allowOutsideClick: false,
+                                           allowEscapeKey: false,
+                                           didOpen: () => {
+                                               Swal.showLoading();
+                                           }
+                                       });
+                        const resultado = await deleteFetch(sb, `hello-world/${estudiante.personid}`);
+                      // console.log(resultado)
+
+                        if (resultado) {
+
+                            setRefresh(true);
+                            Swal.fire({
+                                title: 'El estudiante ha sido eliminado!',
+                                text: 'El estudiante ha sido eliminado correctamente.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                backdrop: true,
+                            });
+                        }
+
+
+                    };
+                  
+                    return (
+                        <div className="d-flex justify-content-center align-items-center gap-2">
+                            
                             {!estudiante.haspayment&&(<button
                                                         type="button"
                                                         style={{ background: "transparent", borderColor: "transparent" }}

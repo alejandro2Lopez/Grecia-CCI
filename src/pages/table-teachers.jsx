@@ -160,36 +160,9 @@ const Table_teacher = () => {
 
                         window.open(url, '_blank');
                     };
-                    const handleDeleteTeacher = async () => {
+                   
 
-                        Swal.fire({
-                            title: 'Eliminado profesor...',
-                            text: 'Por favor espera un momento',
-                            allowOutsideClick: false,
-                            allowEscapeKey: false,
-                            didOpen: () => {
-                                Swal.showLoading();
-                            }
-                        });
-                        const resultado = await deleteFetch(sb, `teacher/${teacher.personid}`);
-                      //  console.log(teacher.personid);
-
-                        if (resultado) {
-
-                            setRefresh(true);
-                            Swal.fire({
-                                title: 'El profesor ha sido eliminado!',
-                                text: 'El profesor ha sido eliminado correctamente.',
-                                icon: 'success',
-                                confirmButtonText: 'Aceptar',
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                backdrop: true,
-                            });
-                        }
-
-
-                    };
+                
                     return (
                         <div className="d-flex justify-content-center align-items-center gap-2">
                             <button
@@ -222,6 +195,50 @@ const Table_teacher = () => {
                                 />
 
                             </button>
+                           
+                        </div>
+                    );
+                },
+            }, {
+                id: 'acciones-delete',
+                header: '',
+                cell: ({ row }) => {
+                    const teacher = row.original;
+
+                   
+                    const handleDeleteTeacher = async () => {
+
+                        Swal.fire({
+                            title: 'Eliminado profesor...',
+                            text: 'Por favor espera un momento',
+                            allowOutsideClick: false,
+                            allowEscapeKey: false,
+                            didOpen: () => {
+                                Swal.showLoading();
+                            }
+                        });
+                        const resultado = await deleteFetch(sb, `teacher/${teacher.personid}`);
+                       // console.log(teacher.personid);
+
+                        if (resultado) {
+
+                            setRefresh(true);
+                            Swal.fire({
+                                title: 'El profesor ha sido eliminado!',
+                                text: 'El profesor ha sido eliminado correctamente.',
+                                icon: 'success',
+                                confirmButtonText: 'Aceptar',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                backdrop: true,
+                            });
+                        }
+
+
+                    };
+                    return (
+                        <div className="d-flex justify-content-center align-items-center gap-2">
+                          
                             {!teacher.hasgroups && (<button
                                 type="button"
                                 style={{ background: "transparent", borderColor: "transparent" }}
