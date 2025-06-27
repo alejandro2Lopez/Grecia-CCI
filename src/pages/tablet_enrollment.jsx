@@ -55,7 +55,7 @@ const Table_enrollment = () => {
                 p_next_payment: p_next_payment
             }
         }
-        console.log(full_data);
+      //  console.log(full_data);
         const res = await postFetch(sb, 'payment', full_data);
         if (res.data) {
             Swal.fire({

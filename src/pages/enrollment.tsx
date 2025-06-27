@@ -60,7 +60,7 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
             const parsed = schema_params.safeParse({ param: paramValue });
 
             if (!parsed.success) {
-                console.warn('Parámetro inválido:', parsed.error.issues);
+                //console.warn('Parámetro inválido:', parsed.error.issues);
                 navigate('/error');
                 return;
             }
@@ -74,7 +74,7 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
                 } else {
                     res.data.enrolment[0].e_active = "0"
                 }
-                console.log(res);
+           //     console.log(res);
                 resetCourseForm(res.data.enrolment[0]);
 
 
@@ -108,14 +108,14 @@ const Enrollment: React.FC<any> = ({ readOnly }) => {
 
         const data = courseForm.getValues();
         setIsSubmitting(true); // Activar loading
-        console.log(data);
+       // console.log(data);
 
         const fullData = {
             enrollment: data,
         };
 
         const resultado = await putFetch(sb, "enrollment", fullData);
-        console.log(resultado);
+        //console.log(resultado);
 
         setIsSubmitting(false);
 

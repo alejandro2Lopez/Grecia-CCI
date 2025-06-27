@@ -58,7 +58,7 @@ const Teacher: React.FC<any> = ({ readOnly, isEdit, mode }) => {
             const parsed = schema_params.safeParse({ param: paramValue });
 
             if (!parsed.success) {
-                console.warn('Parámetro inválido:', parsed.error.issues);
+              //  console.warn('Parámetro inválido:', parsed.error.issues);
                 navigate('/error');
                 return;
             }
@@ -109,11 +109,11 @@ const Teacher: React.FC<any> = ({ readOnly, isEdit, mode }) => {
 
         //  const data = form.getValues();
         setIsSubmitting(true); // Activar loading
-        console.log(data);
+       // console.log(data);
 
         if (isMode == "create") {
             const resultado = await postFetch(sb, "teacher", data);
-            console.log(resultado);
+         //   console.log(resultado);
 
             setIsSubmitting(false);
 
@@ -137,7 +137,7 @@ const Teacher: React.FC<any> = ({ readOnly, isEdit, mode }) => {
         } else {
 
             const resultado = await putFetch(sb, "teacher", data);
-            console.log(resultado);
+        //    console.log(resultado);
 
             setIsSubmitting(false);
 

@@ -29,7 +29,7 @@ const Table_student = () => {
             const res = await getFetch(sb, 'hello-world/');
             if (res.data) {
                 setData(res.data);
-                console.log(res.data)
+               // console.log(res.data)
             }
             setIsLoading(false);
         };
@@ -122,7 +122,7 @@ const Table_student = () => {
                                            }
                                        });
                         const resultado = await deleteFetch(sb, `hello-world/${estudiante.personid}`);
-                       console.log(resultado)
+                     //  console.log(resultado)
 
                         if (resultado) {
 

@@ -76,7 +76,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                 const parsed = schema_params.safeParse({ param: paramValue });
 
                 if (!parsed.success) {
-                    console.warn('Parámetro inválido:', parsed.error.issues);
+                   //console.warn('Parámetro inválido:', parsed.error.issues);
                     navigate('/error');
                     return;
                 }
@@ -89,7 +89,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                     setData(res.data.enrolment);
                     setIsLoading(false);
                 } else {
-                    console.log(res)
+                    //console.log(res)
                     throw new Error('Estructura inesperada en la respuesta del servidor.');
                 }
 
@@ -99,7 +99,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                     await get_courses();
                 }
             } catch (e) {
-                console.error('Error al obtener datos del estudiante:', e);
+             //   console.error('Error al obtener datos del estudiante:', e);
             }
         };
 
@@ -136,7 +136,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
         };
 
         const resultado = await putFetch(sb, "hello-world", fullData);
-        console.log(resultado);
+       // console.log(resultado);
         if (resultado) {
             setIsSubmitting(false);
 
@@ -250,14 +250,14 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                     const newValue = e.target.checked;
                     setIsSubmittingEnroll(true);
                     setSubmittingRowIndex(rowIndex); // Marcar la fila que se está actualizando
-                    console.log("da el valor" + newValue);
+                 //   console.log("da el valor" + newValue);
 
                     const fullData = {
                         enrollment: { e_enrolment_id: rowData.e_enrolment_id, e_active: newValue },
                     };
 
                     const resultado = await postFetch(sb, "enrollment", fullData);
-                    console.log(resultado);
+                  //  console.log(resultado);
 
                     if (resultado) {
                         setData((old) =>
@@ -326,7 +326,7 @@ const Student: React.FC<any> = ({ isReadOnly, isEdit, titleAction }) => {
                         }
                     });
                     const res = await deleteFetch(sb, `enrollment/${estudiante.e_enrolment_id}`);
-                    console.log(res)
+                  //  console.log(res)
                     if (res.data) {
                         Swal.fire({
                             title: 'Registro completo!',

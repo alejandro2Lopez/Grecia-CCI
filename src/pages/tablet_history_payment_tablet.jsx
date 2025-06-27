@@ -30,7 +30,7 @@ const Tablet_history_payment = () => {
             const res = await getFetch(sb, 'payment/true');
             if (res.data) {
                 setData(res.data);
-                console.log(res.data);
+              //  console.log(res.data);
             }
             setIsLoading(false); // <-- importante
         };
@@ -132,7 +132,7 @@ const Tablet_history_payment = () => {
 
                                 try {
                                     const resultado = await deleteFetch(sb, `payment/${payment.p_payment_id}`);
-                                    console.log(payment.p_payment_id);
+                                   // console.log(payment.p_payment_id);
 
                                     if (resultado) {
                                         setRefresh(true);

@@ -12,7 +12,7 @@ export const getFetch = async (sb, path) => {
     });
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-      console.error('Error del servidor:', await res.json());
+      //console.error('Error del servidor:', await res.json());
       return false;
     }
     else {
@@ -25,7 +25,7 @@ export const getFetch = async (sb, path) => {
 
   } catch (error) {
     showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
-    console.error('Error de red o ejecución:', error);
+   // console.error('Error de red o ejecución:', error);
     return false;
   }
 };
@@ -44,19 +44,19 @@ export const postFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-      console.error('Error del servidor:',  await res.json());
+     // console.error('Error del servidor:',  await res.json());
       return false;
     }
     else {
       const response = await res.json().catch(() => {
         throw new Error('Respuesta del servidor no es JSON válido');
       });
-      console.log(response);
+    //  console.log(response);
       return response;
     }
   } catch (error) {
     showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
-    console.error('Error de red o ejecución:', error);
+ //   console.error('Error de red o ejecución:', error);
     return false;
   }
 
@@ -77,7 +77,7 @@ export const putFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-      console.error('Error del servidor:', await res.json());
+  //    console.error('Error del servidor:', await res.json());
       return false;
     } else {
       const response = await res.json().catch(() => {
@@ -89,7 +89,7 @@ export const putFetch = async (sb, path, data) => {
     }
   } catch (error) {
     showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
-    console.error('Error de red o ejecución:', error.message);
+    //console.error('Error de red o ejecución:', error.message);
     return false;
   }
 };export const deleteFetch = async (sb, path, data = null) => {
@@ -108,17 +108,17 @@ export const putFetch = async (sb, path, data) => {
 
     if (!res.ok) {
       showErrorAlert("Error", "Ocurrió un error inesperado. Intenta nuevamente.", "error");
-      console.log(await res.json());
+     // console.log(await res.json());
       return false;
     } else {
       const response = await res.json().catch(() => {
         return {}; // En caso de que no retorne JSON
       });
-      console.log(response);
+   //   console.log(response);
       return response;
     }
   } catch (error) {
-    console.log(error.message);
+  //  console.log(error.message);
     showErrorAlert("Error", "Hubo un problema. Refresca la página o contáctanos.", "error");
     return false;
   }

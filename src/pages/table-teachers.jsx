@@ -86,14 +86,14 @@ const Table_teacher = () => {
                         const newValue = e.target.checked;
                         setIsSubmittingStatus(true);
                         setSubmittingRowIndex(rowIndex); // Marcar la fila que se está actualizando
-                        console.log("da el valor" + newValue);
+                     //   console.log("da el valor" + newValue);
 
                         const fullData = {
                             teacher: { p_person_id: rowData.personid, p_active: newValue },
                         };
 
                         const resultado = await deleteFetch(sb, "teacher/", fullData);
-                        console.log(resultado);
+                     //   console.log(resultado);
 
                         if (resultado) {
                             setData((old) =>
@@ -172,7 +172,7 @@ const Table_teacher = () => {
                             }
                         });
                         const resultado = await deleteFetch(sb, `teacher/${teacher.personid}`);
-                        console.log(teacher.personid);
+                      //  console.log(teacher.personid);
 
                         if (resultado) {
 
