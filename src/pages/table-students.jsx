@@ -154,7 +154,7 @@ const Table_student = () => {
                 },
             },
             {
-                id: 'acciones',
+                id: 'acciones-delete',
                 header: '',
                 cell: ({ row }) => {
                     const estudiante = row.original;
