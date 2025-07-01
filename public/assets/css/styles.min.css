@@ -783,14 +783,20 @@ body {
   height: 65px;
 }
 
+.bottom-nav {
+  display: flex;
+  justify-content: center; /* Centra los ítems horizontalmente */
+  align-items: center;     /* Centra verticalmente si hay altura */
+  height: 60px;            /* Define una altura para que se vea el centrado */
+  background-color: #222;  /* Fondo de ejemplo */
+}
+
 .bottom-nav .nav-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* Centra verticalmente dentro del espacio */
   margin: 0 8px;
-  /* espacio entre ítems */
   min-width: 50px;
   text-align: center;
 }
@@ -803,6 +809,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
+
 
 .bottom-nav .nav-link p {
   margin: 2px 0 0;
