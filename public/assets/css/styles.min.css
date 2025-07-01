@@ -799,8 +799,27 @@ body {
   min-width: 50px;
   text-align: center;
 }
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: white;
+  width: 100%;  /* Asegura que se expanda */
+}
 
-.bottom-nav .nav-link {
+.nav-link .icon-size {
+  font-size: 1.6rem;
+  line-height: 1;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;  /* 🔥 clave: ancho fijo para alinear */
+  height: 24px;
+}
+/*.bottom-nav .nav-link {
   color: #fff;
   font-size: 0.9rem;
   text-decoration: none;
@@ -815,11 +834,12 @@ body {
   margin-bottom: 4px;
   line-height: 1;
 }
+*/
 
-
-.bottom-nav .nav-link p {
-  margin: 2px 0 0;
-  font-size: 0.7rem;
+.nav-link p {
+  margin: 0;
+  font-size: 0.75rem;
+  text-align: center;
 }
 
 .bottom-nav .nav-link.active {
