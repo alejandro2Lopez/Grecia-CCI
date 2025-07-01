@@ -790,36 +790,35 @@ body {
   justify-content: center;
   align-items: center;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
-.bottom-nav .nav-item {
+.nav-item {
   margin: 0 8px;
-  min-width: 50px;
+  min-width: 60px;
   text-align: center;
 }
 
-.bottom-nav .nav-link {
-  color: #fff;
-  font-size: 0.9rem;
-  text-decoration: none;
+.nav-link {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  color: white;
 }
 
-.bottom-nav .nav-link i {
+.nav-link .icon-size {
   font-size: 1.5rem;
-  margin-bottom: 4px;
   line-height: 1;
+  margin-bottom: 2px;
 }
 
-
-.bottom-nav .nav-link p {
-  margin: 2px 0 0;
-  font-size: 0.7rem;
+.nav-link p {
+  margin: 0;
+  font-size: 0.75rem;
+  line-height: 1;
 }
 
 .bottom-nav .nav-link.active {
