@@ -111,13 +111,17 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                 <ul className="nav bottom-nav">
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/estudiantes">
+                            <div className="icon-wrapper">
                             <FontAwesomeIcon icon={faUsersRectangle} className="icon-size" />
+                            </div>
                             <p>Estudiantes</p>
                         </NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/profesores">
+                          <div className="icon-wrapper">
                             <FontAwesomeIcon icon={faChalkboardUser} className="icon-size" />
+                            </div>
                             <p>Profesores</p>
                         </NavLink>
                     </li>
