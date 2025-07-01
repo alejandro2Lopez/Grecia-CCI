@@ -802,8 +802,8 @@ body {
 .nav-link {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: center!important;
+  justify-content: center!important;
   text-decoration: none;
   color: white;
   width: 100%;  /* Asegura que se expanda */
@@ -814,8 +814,8 @@ body {
   line-height: 1;
   margin-bottom: 4px;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center!important;
+  justify-content: center!important;
   width: 24px;  /* 🔥 clave: ancho fijo para alinear */
   height: 24px;
 }
