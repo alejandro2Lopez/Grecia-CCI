@@ -790,35 +790,36 @@ body {
   justify-content: center;
   align-items: center;
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
-.nav-item {
+.bottom-nav .nav-item {
   margin: 0 8px;
-  min-width: 60px;
+  min-width: 50px;
   text-align: center;
 }
 
-.nav-link {
+.bottom-nav .nav-link {
+  color: #fff;
+  font-size: 0.9rem;
+  text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  color: white;
 }
 
-.nav-link .icon-size {
+.bottom-nav .nav-link i {
   font-size: 1.5rem;
+  margin-bottom: 4px;
   line-height: 1;
-  margin-bottom: 2px;
 }
 
-.nav-link p {
-  margin: 0;
-  font-size: 0.75rem;
-  line-height: 1;
+
+.bottom-nav .nav-link p {
+  margin: 2px 0 0;
+  font-size: 0.7rem;
 }
 
 .bottom-nav .nav-link.active {
