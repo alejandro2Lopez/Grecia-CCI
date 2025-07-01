@@ -112,22 +112,24 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/estudiantes">
                             <div className="icon-wrapper">
-                            <FontAwesomeIcon icon={faUsersRectangle}/>
+                                <FontAwesomeIcon icon={faUsersRectangle} />
                             </div>
                             <p>Estudiantes</p>
                         </NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/profesores">
-                          <div className="icon-wrapper">
-                            <FontAwesomeIcon icon={faChalkboardUser} />
+                            <div className="icon-wrapper">
+                                <FontAwesomeIcon icon={faChalkboardUser} />
                             </div>
                             <p>Profesores</p>
                         </NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/gestion-de-pagos">
-                            <FontAwesomeIcon icon={faCalendar} className="icon-size" />
+                            <div className="icon-wrapper">
+                                <FontAwesomeIcon icon={faCalendar} />
+                            </div>
                             <p>Pagos</p>
                         </NavLink>
 
@@ -135,7 +137,9 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
 
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/informe-de-pagos">
-                            <FontAwesomeIcon icon={faChartSimple} className="icon-size" />
+                            <div className="icon-wrapper">
+                                <FontAwesomeIcon icon={faChartSimple} />
+                            </div>
                             <p>Informe</p>
                         </NavLink>
                     </li>
@@ -147,7 +151,9 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                             data-bs-toggle="dropdown"
                             aria-expanded="false"
                         >
-                            <FontAwesomeIcon icon={faEllipsisH} className="icon-size" />
+                            <div className="icon-wrapper">
+                                <FontAwesomeIcon icon={faEllipsisH} />
+                            </div>
                             <p>Más</p>
                         </button>
                         <ul className="dropdown-menu dropdown-menu-end text-center">
