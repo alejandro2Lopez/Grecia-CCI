@@ -112,7 +112,7 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/estudiantes">
                             <div className="icon-wrapper">
-                            <FontAwesomeIcon icon={faUsersRectangle} className="icon-size" />
+                            <FontAwesomeIcon icon={faUsersRectangle}/>
                             </div>
                             <p>Estudiantes</p>
                         </NavLink>
@@ -120,7 +120,7 @@ export const Navbar = ({ collapsed, setCollapsed }) => {
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/profesores">
                           <div className="icon-wrapper">
-                            <FontAwesomeIcon icon={faChalkboardUser} className="icon-size" />
+                            <FontAwesomeIcon icon={faChalkboardUser} />
                             </div>
                             <p>Profesores</p>
                         </NavLink>
