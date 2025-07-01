@@ -386,7 +386,8 @@ body {
   .no-side-bar-collapased {
     width: 250px;
   }
-    .bottom-nav {
+
+  .bottom-nav {
     display: none !important;
   }
 
@@ -403,6 +404,7 @@ body {
   .nav-small-dev {
     display: none !important;
   }
+
   .sidebar.toggled {
     width: 130px !important;
     transition: width 0.3s ease;
@@ -767,9 +769,10 @@ body {
   .clean-navbar {
     display: none !important;
   }
-  
+
 }
-.bottom-nav {
+
+/*.bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -779,16 +782,19 @@ body {
   display: flex;
   justify-content: center;
   /* Centra todos los <li> horizontalmente */
-  padding: 5px 0;
+  /*padding: 5px 0;
   height: 65px;
-}
+}*/
 
 .bottom-nav {
   display: flex;
-  justify-content: center; /* Centra los ítems horizontalmente */
-  align-items: center;     /* Centra verticalmente si hay altura */
-  height: 60px;            /* Define una altura para que se vea el centrado */
-  background-color: #222;  /* Fondo de ejemplo */
+  justify-content: center;
+  /* Centra los ítems horizontalmente */
+  align-items: center;
+  /* Centra verticalmente si hay altura */
+  height: 60px;
+  /* Define una altura para que se vea el centrado */
+  background-color: #2d94ef;
 }
 
 .bottom-nav .nav-item {
