@@ -802,7 +802,7 @@ body {
   justify-content: center !important;
 }
 
-/*.nav-link {
+.bottom-nav .nav-link {
   display: flex;
   flex-direction: column;
   align-items: center !important;
@@ -811,10 +811,25 @@ body {
   color: white;
   width: 100%;
   /* Asegura que se expanda */
-/*}*/
+}*/
 
+.bottom-nav .nav-link .icon-size {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  /* Elimina cualquier alineación visual incorrecta */
+  vertical-align: middle;
+}
 
-
+.bottom-nav .nav-link .icon-size svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* 🔥 elimina el "espacio invisible" debajo */
+}
 
 .icon-wrapper {
   width: 24px;
@@ -840,14 +855,14 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}*/
+}
 
 .bottom-nav .nav-link i {
   font-size: 1.5rem;
   margin-bottom: 4px;
   line-height: 1;
 }
-
+*/
 
 .nav-link p {
   margin: 0;
