@@ -772,7 +772,7 @@ body {
 
 }
 
-/*.bottom-nav {
+.bottom-nav {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -781,39 +781,39 @@ body {
   z-index: 1030;
   display: flex;
   justify-content: center;
-  /* Centra todos los <li> horizontalmente */
-  /*padding: 5px 0;
+  padding: 5px 0;
   height: 65px;
-}*/
+}
 
-.bottom-nav {
+.bottom-nav ul {
   display: flex;
   justify-content: center;
-  /* Centra los ítems horizontalmente */
   align-items: center;
-  /* Centra verticalmente si hay altura */
-  height: 60px;
-  /* Define una altura para que se vea el centrado */
-  background-color: #2d94ef;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .bottom-nav .nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   margin: 0 8px;
   min-width: 50px;
   text-align: center;
 }
 
 .bottom-nav .nav-link {
-  color: #c7c9ca;
-  font-size: 1.2rem;
+  color: #fff;
+  font-size: 0.9rem;
   text-decoration: none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.bottom-nav .nav-link i {
+  font-size: 1.5rem;
+  margin-bottom: 4px;
+  line-height: 1;
 }
 
 
