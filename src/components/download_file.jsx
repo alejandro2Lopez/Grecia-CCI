@@ -17,6 +17,9 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
     // Crear la hoja de cálculo básica
     const worksheet = XLSX.utils.json_to_sheet(data);
 
+    // Array para almacenar las propiedades de las columnas (ancho, etc.)
+    const wscols = [];
+
     // Detectar las columnas de fecha y convertir las celdas
     const dateHeaders = columns
         .filter(col => col.meta?.type === 'date') // Usar `meta` como convención
@@ -31,6 +34,9 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
         const header = colHeaderCell.v;
 
         if (dateHeaders.includes(header)) {
+            // Si es una columna de fecha, establecer un ancho adecuado para fechas (ej. 15-20)
+            // Un ancho de 15-20 suele ser suficiente para "DD/MM/YYYY HH:MM:SS"
+            wscols[C] = { wch: 18 }; // wch es el ancho de la columna en caracteres
             for (let R = 1; R <= range.e.r; ++R) {
                 const cellAddress = XLSX.utils.encode_cell({ r: R, c: C });
                 const cell = worksheet[cellAddress];
@@ -44,11 +50,24 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
                             v: date, // Valor: objeto Date de JavaScript
                             z: 'dd/mm/yyyy', // Formato de visualización en Excel
                         };
+                    } else {
+                        // Si no se puede parsear como fecha, mantener como texto o manejar el error
+                        console.warn(`No se pudo parsear la fecha en la celda ${cellAddress}: ${cell.v}`);
                     }
                 }
             }
+        } else {
+            // Para otras columnas, puedes intentar calcular el ancho automáticamente
+            // o establecer un ancho predeterminado si es necesario.
+            // Para este ejemplo, no se ajusta automáticamente el ancho de las columnas no-fecha
+            // para mantener el foco en la solución del problema de la fecha.
+            // Una implementación más completa podría calcular el ancho basado en el contenido.
+            // wscols[C] = { wch: header.length + 2 }; // Ejemplo simple para el encabezado
         }
     }
+
+    // Asignar los anchos de columna al worksheet
+    worksheet['!cols'] = wscols;
 
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, 'Datos');
@@ -75,11 +94,11 @@ const parseFecha = (value) => {
     if (match) {
         // Extraer los componentes de la fecha y hora.
         // Si la hora no está presente, se usarán '00' por defecto.
-        const [, dd, mm, yyyy, hh = '00', min = '00', ss = '00'] = match;
+        const [, dd, mm, and, hh = '00', min = '00', ss = '00'] = match;
 
         // Crear un objeto Date de JavaScript.
         // Importante: el mes en JavaScript es base 0 (enero es 0, diciembre es 11).
-        const date = new Date(Number(yyyy), Number(mm) - 1, Number(dd), Number(hh), Number(min), Number(ss));
+        const date = new Date(Number(and), Number(mm) - 1, Number(dd), Number(hh), Number(min), Number(ss));
 
         // Verificar si la fecha es válida (ej. evita fechas como 31/02/2025)
         if (isNaN(date.getTime())) {
