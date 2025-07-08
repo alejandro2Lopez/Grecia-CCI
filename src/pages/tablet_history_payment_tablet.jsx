@@ -47,6 +47,7 @@ const Tablet_history_payment = () => {
             {
                 accessorKey: 'p_payment_date',
                 header: 'Fecha de pago',
+                meta: { type: 'date' },
                 cell: ({ getValue }) => {
                     const value = getValue();
                     const date = new Date(value);
