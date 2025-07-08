@@ -36,12 +36,13 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
                 const cell = worksheet[cellAddress];
 
                 if (cell && typeof cell.v === 'string') {
+                    // Intentamos parsear la fecha-hora completa
                     const date = parseFecha(cell.v);
-                    if (date && !isNaN(date)) {
+                    if (date && !isNaN(date.getTime())) { // Usar getTime() para verificar validez
                         worksheet[cellAddress] = {
-                            t: 'd',
-                            v: date,
-                            z: 'dd/mm/yyyy',
+                            t: 'd', // Tipo de celda: fecha
+                            v: date, // Valor: objeto Date de JavaScript
+                            z: 'dd/mm/yyyy', // Formato de visualización en Excel
                         };
                     }
                 }
@@ -62,23 +63,40 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
     });
 
     saveAs(blob, filename);
-};const parseFecha = (value) => {
+};
+
+const parseFecha = (value) => {
     if (typeof value !== 'string') return null;
 
-    // Si viene como "25/6/2025 17:59:47", nos quedamos solo con la fecha
-    const [fechaStr] = value.split(' ');
-    
-    // Detecta formato dd/mm/yyyy
-    const match = fechaStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    // Regex para detectar formato "DD/MM/YYYY HH:MM:SS" o "DD/MM/YYYY"
+    // Los grupos de hora, minuto y segundo son opcionales
+    const match = value.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?: (\d{1,2}):(\d{1,2}):(\d{1,2}))?$/);
+
     if (match) {
-        const [, dd, mm, yyyy] = match;
-        return new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+        // Extraer los componentes de la fecha y hora.
+        // Si la hora no está presente, se usarán '00' por defecto.
+        const [, dd, mm, yyyy, hh = '00', min = '00', ss = '00'] = match;
+
+        // Crear un objeto Date de JavaScript.
+        // Importante: el mes en JavaScript es base 0 (enero es 0, diciembre es 11).
+        const date = new Date(Number(yyyy), Number(mm) - 1, Number(dd), Number(hh), Number(min), Number(ss));
+
+        // Verificar si la fecha es válida (ej. evita fechas como 31/02/2025)
+        if (isNaN(date.getTime())) {
+            return null; // Retorna null si la fecha no es válida
+        }
+        return date;
     }
 
-    // Detecta formato ISO yyyy-mm-dd
-    if (/^\d{4}-\d{2}-\d{2}$/.test(fechaStr)) {
-        return new Date(fechaStr);
+    // Si el formato anterior no coincide, intenta con formato ISO (YYYY-MM-DD o YYYY-MM-DDTHH:MM:SSZ)
+    // Esto es un fallback, aunque el problema principal es con el formato DD/MM/YYYY HH:MM:SS
+    if (/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{3}Z)?)?$/.test(value)) {
+        const date = new Date(value);
+        if (isNaN(date.getTime())) {
+            return null;
+        }
+        return date;
     }
 
-    return null;
+    return null; // Retorna null si ningún formato coincide
 };
