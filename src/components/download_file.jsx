@@ -41,7 +41,7 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
                         worksheet[cellAddress] = {
                             t: 'd', // tipo "date"
                             v: date,
-                            z: XLSX.SSF._table[14], // formato "m/d/yy"
+                            z: 'yyyy/mm/dd' // formato "m/d/yy"
                         };
                     }
                 }
