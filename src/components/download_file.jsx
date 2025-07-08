@@ -62,18 +62,22 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
     });
 
     saveAs(blob, filename);
-};
-const parseFecha = (value) => {
+};const parseFecha = (value) => {
     if (typeof value !== 'string') return null;
 
-    // Detecta ISO 'yyyy-mm-dd'
-    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return new Date(value);
+    // Si viene como "25/6/2025 17:59:47", nos quedamos solo con la fecha
+    const [fechaStr] = value.split(' ');
+    
+    // Detecta formato dd/mm/yyyy
+    const match = fechaStr.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+    if (match) {
+        const [, dd, mm, yyyy] = match;
+        return new Date(Number(yyyy), Number(mm) - 1, Number(dd));
+    }
 
-    // Detecta 'dd/mm/yyyy hh:mm:ss'
-    if (/^\d{1,2}\/\d{1,2}\/\d{4}/.test(value)) {
-        const [fecha] = value.split(' ');
-        const [dd, mm, yyyy] = fecha.split('/').map(Number);
-        return new Date(yyyy, mm - 1, dd);
+    // Detecta formato ISO yyyy-mm-dd
+    if (/^\d{4}-\d{2}-\d{2}$/.test(fechaStr)) {
+        return new Date(fechaStr);
     }
 
     return null;
