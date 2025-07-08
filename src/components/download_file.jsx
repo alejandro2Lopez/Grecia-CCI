@@ -36,7 +36,10 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
                 const cell = worksheet[cellAddress];
 
                 if (cell && typeof cell.v === 'string') {
-                    const date = new Date(cell.v.split(' ')[0]);
+                    const dateStr = cell.v.split(' ')[0]; // "25/6/2025"
+                    const parts = dateStr.split('/'); // [25, 6, 2025]
+                    const [day, month, year] = parts.map(Number);
+                    const date = new Date(year, month - 1, day);
                     if (!isNaN(date)) {
                         worksheet[cellAddress] = {
                             t: 'd', // tipo "date"
