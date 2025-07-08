@@ -36,15 +36,12 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
                 const cell = worksheet[cellAddress];
 
                 if (cell && typeof cell.v === 'string') {
-                    const dateStr = cell.v.split(' ')[0]; // "25/6/2025"
-                    const parts = dateStr.split('/'); // [25, 6, 2025]
-                    const [day, month, year] = parts.map(Number);
-                    const date = new Date(year, month - 1, day);
-                    if (!isNaN(date)) {
+                    const date = parseFecha(cell.v);
+                    if (date && !isNaN(date)) {
                         worksheet[cellAddress] = {
-                            t: 'd', // tipo "date"
+                            t: 'd',
                             v: date,
-                            z: 'dd/mm/yyyy' // formato "m/d/yy"
+                            z: 'dd/mm/yyyy',
                         };
                     }
                 }
@@ -65,4 +62,19 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
     });
 
     saveAs(blob, filename);
+};
+const parseFecha = (value) => {
+    if (typeof value !== 'string') return null;
+
+    // Detecta ISO 'yyyy-mm-dd'
+    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) return new Date(value);
+
+    // Detecta 'dd/mm/yyyy hh:mm:ss'
+    if (/^\d{1,2}\/\d{1,2}\/\d{4}/.test(value)) {
+        const [fecha] = value.split(' ');
+        const [dd, mm, yyyy] = fecha.split('/').map(Number);
+        return new Date(yyyy, mm - 1, dd);
+    }
+
+    return null;
 };
