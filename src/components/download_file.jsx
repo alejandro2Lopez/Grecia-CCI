@@ -111,6 +111,7 @@ const parseFecha = (value) => {
     // Esto es un fallback, aunque el problema principal es con el formato DD/MM/YYYY HH:MM:SS
     if (/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d{3}Z)?)?$/.test(value)) {
         const date = new Date(value);
+         date.setHours(0, 0, 0, 0);
         if (isNaN(date.getTime())) {
             return null;
         }
