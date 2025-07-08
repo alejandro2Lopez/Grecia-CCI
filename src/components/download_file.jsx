@@ -36,11 +36,11 @@ export const downloadTableToExcel = (table, columns, filename = 'tabla.xlsx') =>
                 const cell = worksheet[cellAddress];
 
                 if (cell && typeof cell.v === 'string') {
-                    const date = new Date(cell.v);
+                    const dateOnly = new Date(cell.v.split(' ')[0]);
                     if (!isNaN(date)) {
                         worksheet[cellAddress] = {
                             t: 'd', // tipo "date"
-                            v: date,
+                            v: dateOnly,
                             z: 'dd/mm/yyyy' // formato "m/d/yy"
                         };
                     }
