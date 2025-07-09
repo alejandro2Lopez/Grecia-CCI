@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { getFetch } from '../components/Api_Connect';
 import { useAuth } from '../context/AuthContext';
 import { Loading } from '../components/Component_loading';
-export const Statistics_payment = () => {
+ const Statistics_payment = () => {
     const [labels_barline, setLabels_barline] = useState({});
     const [values_barline, setValues_barline] = useState({});
     const [refresh, setRefresh] = useState(true);
@@ -214,3 +214,4 @@ export const Statistics_payment = () => {
     </div>
     ));
 }
+export default Statistics_payment;
