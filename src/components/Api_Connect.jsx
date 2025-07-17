@@ -1,7 +1,7 @@
 import { showErrorAlert } from "./Response_user";
 
 // Región deseada para ejecución de funciones
-const REGION = 'us-west-2';
+const REGION = 'us-west-1';
 const SUPABASE_URL = 'https://bweenuyuwknostqrmvuf.supabase.co/functions/v1';
 
 export const getFetch = async (sb, path) => {
